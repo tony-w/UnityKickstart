@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Jolly;
 
 public class Player : MonoBehaviour
 {
@@ -7,14 +8,22 @@ public class Player : MonoBehaviour
 	public float MaxSpeed;
 	public float JumpForce;
 
+	public GameObject GroundContactDelta;
+
+	private bool CanJump;
+
 	void Start ()
 	{
-	
+		JollyDebug.Watch (this, "CanJump", delegate () {
+			return this.CanJump;
+		});
 	}
 	
 	void Update ()
 	{
-	
+		Ray ray = new Ray(this.transform.position, Vector3.down);
+		float maximumDistance = -this.GroundContactDelta.transform.localPosition.y;
+		this.CanJump = Physics.Raycast(ray, maximumDistance);
 	}
 
 	void FixedUpdate ()
@@ -37,9 +46,10 @@ public class Player : MonoBehaviour
     	}
 
 		bool jump = Input.GetButtonDown ("Jump");
-		if (jump)
+		if (jump && this.CanJump)
 		{
 			this.rigidbody.AddForce(new Vector3(0.0f, this.JumpForce, 0.0f));
+			this.CanJump = false;
 		}
 	}
 }
