@@ -10,10 +10,14 @@ public class Player : MonoBehaviour
 
 	public GameObject GroundContactDelta;
 
+	private PlayerController PlayerController;
+
 	private bool CanJump;
 
 	void Start ()
 	{
+		this.PlayerController = this.GetComponent<PlayerController>();
+
 		JollyDebug.Watch (this, "CanJump", delegate () {
 			return this.CanJump;
 		});
@@ -28,8 +32,8 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		float h = Input.GetAxis (string.Format ("Horizontal"));
-		float v = Input.GetAxis (string.Format ("Vertical"));
+		float h = this.PlayerController.HorizontalMovementAxis;
+		float v = this.PlayerController.VericalMovementAxis;
 
 		this.rigidbody.AddForce (new Vector3(h * this.MovementForce, 0.0f, v * this.MovementForce));
 
@@ -45,7 +49,7 @@ public class Player : MonoBehaviour
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, this.rigidbody.velocity.y, Mathf.Sign (this.rigidbody.velocity.z) * maxSpeedZ);
     	}
 
-		bool jump = Input.GetButtonDown ("Jump");
+		bool jump = this.PlayerController.Jump;
 		if (jump && this.CanJump)
 		{
 			this.rigidbody.AddForce(new Vector3(0.0f, this.JumpForce, 0.0f));
