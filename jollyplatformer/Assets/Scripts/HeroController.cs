@@ -5,14 +5,6 @@ public class HeroController : MonoBehaviour
 {
 	public int PlayerNumber;
 
-	void Start ()
-	{
-	}
-	
-	void Update ()
-	{
-	}
-
 	public float HorizontalMovementAxis
 	{
 		get
