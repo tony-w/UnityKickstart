@@ -12,14 +12,14 @@ public class Player : MonoBehaviour
 
 	private PlayerController PlayerController;
 
-	private bool CanJump;
+	public bool IsOnGround { get; private set; }
 
 	void Start ()
 	{
 		this.PlayerController = this.GetComponent<PlayerController>();
 
-		JollyDebug.Watch (this, "CanJump", delegate () {
-			return this.CanJump;
+		JollyDebug.Watch (this, "IsOnGround", delegate () {
+			return this.IsOnGround;
 		});
 	}
 	
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 	{
 		Ray ray = new Ray(this.transform.position, Vector3.down);
 		float maximumDistance = -this.GroundContactDelta.transform.localPosition.y;
-		this.CanJump = Physics.Raycast(ray, maximumDistance);
+		this.IsOnGround = Physics.Raycast(ray, maximumDistance);
 	}
 
 	void FixedUpdate ()
@@ -50,10 +50,10 @@ public class Player : MonoBehaviour
     	}
 
 		bool jump = this.PlayerController.Jump;
-		if (jump && this.CanJump)
+		if (jump && this.IsOnGround)
 		{
 			this.rigidbody.AddForce(new Vector3(0.0f, this.JumpForce, 0.0f));
-			this.CanJump = false;
+			this.IsOnGround = false;
 		}
 	}
 

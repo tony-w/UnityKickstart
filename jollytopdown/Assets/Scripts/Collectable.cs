@@ -17,10 +17,9 @@ public class Collectable : MonoBehaviour
 		this.transform.rotation = Quaternion.Euler(eulerRotation.x, Time.time * this.RotationSpeed, eulerRotation.z);
 	}
 
-	void OnEnterTrigger(Collider other)
+	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("OnEnterTrigger");
-		Player player = collider.gameObject.GetComponent<Player>();
+		Player player = other.gameObject.GetComponent<Player>();
 		if (null == player)
 		{
 			return;
