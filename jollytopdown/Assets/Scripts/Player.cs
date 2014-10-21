@@ -56,4 +56,8 @@ public class Player : MonoBehaviour
 			this.CanJump = false;
 		}
 	}
+
+	public void OnCollected(Collectable collectable)
+	{
+	}
 }
