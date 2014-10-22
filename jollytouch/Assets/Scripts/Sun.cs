@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Sun : MonoBehaviour {
+public class Sun : MonoBehaviour
+{
 
 	void Start ()
-	{
-	
-	}
-
-	void OnPreRender ()
 	{
 	}
 

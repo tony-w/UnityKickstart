@@ -2,7 +2,8 @@
 using System.Collections;
 using Jolly;
 
-public class Satellite : MonoBehaviour {
+public class Satellite : MonoBehaviour
+{
 
 	public float GravityForce;
 
