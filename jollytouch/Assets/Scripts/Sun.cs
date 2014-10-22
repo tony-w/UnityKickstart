@@ -32,12 +32,15 @@ public class Sun : MonoBehaviour
 
 	void Start ()
 	{
+		int totalDestinations = GameObject.FindGameObjectsWithTag("Sun").Length;
+		JollyDebug.Assert (totalDestinations > 0);
 		float totalObjectsPerSecond = 0;
 		foreach (GameObject go in GameObject.FindGameObjectsWithTag("SpawnPoint"))
 		{
 			SpawnsObjectStream spawnsObjectStream = go.GetComponent<SpawnsObjectStream>();
 			totalObjectsPerSecond += spawnsObjectStream.ObjectsPerSecond - 1;
 		}
+		totalObjectsPerSecond /= totalDestinations;
 		JollyDebug.Assert (totalObjectsPerSecond > 0);
 		Debug.Log (string.Format ("tops = {0}", totalObjectsPerSecond));
 		this.PowerIncreasePerUnit = 1.0f / totalObjectsPerSecond;
@@ -54,7 +57,7 @@ public class Sun : MonoBehaviour
 
 	void ComputePower ()
 	{
-		bool levelIsComplete = this.LerpedPower > 0.95f;
+		bool levelIsComplete = this.LevelIsComplete || this.LerpedPower > 0.90f;
 		if (levelIsComplete)
 		{
 			this.Power = 1.0f;

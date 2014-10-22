@@ -50,8 +50,8 @@ public class LevelManager : MonoBehaviour
 
 	IEnumerator EndLevelAndLoadNextLevel ()
 	{
-		float timeToStopWaiting = Time.time + 10.0f;
-		while (GameObject.FindGameObjectsWithTag("Bouncer").Length > 0 && timeToStopWaiting >= Time.time)
+		float timeToStopWaiting = Time.time + 5.0f;
+		while (GameObject.FindGameObjectsWithTag("Bouncer").Length > 0 || timeToStopWaiting >= Time.time)
 		{
 			yield return null;
 		}

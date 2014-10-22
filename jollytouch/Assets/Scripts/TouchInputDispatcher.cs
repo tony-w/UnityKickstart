@@ -2,7 +2,8 @@
 using System.Collections;
 using Jolly;
 
-public class TouchInputDispatcher : MonoBehaviour {
+public class TouchInputDispatcher : MonoBehaviour
+{
 
 	// Use this for initialization
 	void Start () {
