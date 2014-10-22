@@ -4,28 +4,48 @@ using Jolly;
 
 public class Draggable : MonoBehaviour
 {
-	Vector2 lastTouch;
+	public Color touchedColor;
+	private Color originalColor;
+
+	private Vector2 lastTouch;
+
+	private SpriteRenderer spriteRenderer;
 
 	void Start ()
 	{
-	
+		this.spriteRenderer = this.GetComponent<SpriteRenderer>();
+		this.originalColor = this.spriteRenderer.color;
 	}
 	
 	void Update ()
 	{
-	
+		this.rigidbody2D.velocity = Vector2.zero;
 	}
 
 	void OnTouchDown (Vector2 position)
 	{
-		Debug.Log ("OnTouchDown");
 		this.lastTouch = position;
+		this.spriteRenderer.color = this.touchedColor;
 	}
 
 	void OnTouch (Vector2 position)
 	{
-		Debug.Log ("OnTouch");
 		this.transform.position += (position - this.lastTouch).xyz(0.0f);
 		this.lastTouch = position;
+	}
+
+	void OnTouchUp (Vector2 position)
+	{
+		this.RestoreOriginalColor();
+	}
+
+	void OnTouchExit (Vector2 position)
+	{
+		this.RestoreOriginalColor();
+	}
+
+	void RestoreOriginalColor ()
+	{
+		this.spriteRenderer.color = this.originalColor;
 	}
 }
