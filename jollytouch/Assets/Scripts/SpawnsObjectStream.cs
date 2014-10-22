@@ -22,6 +22,10 @@ public class SpawnsObjectStream : MonoBehaviour
 	
 	void Update ()
 	{
+		if (LevelManager.Instance.LevelIsComplete)
+		{
+			return;
+		}
 		this.TimeUntilNextObject -= Time.deltaTime;
 		if (this.TimeUntilNextObject < 0)
 		{
