@@ -19,4 +19,5 @@ Controls
 --------
 
 Player 1: w/a/s/d for movement, 'c' or 'e' to jump
+
 Player 2: arrow keys for movement, spacebar or '/' to jump
