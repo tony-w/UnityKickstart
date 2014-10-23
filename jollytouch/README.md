@@ -41,8 +41,8 @@ uses Unity's physics engine to pick a 2D collider. A function unique to the curr
 touch phase is called on the collider's GameObject using
 `GameObject::SendMessage`:
 
-* `void OnTouchBegin(Vector2 point)` - The touch started
-* `void OnTouchEnd(Vector2 point)` - The touch ended
+* `void OnTouchBegin(Vector2 point)`
+* `void OnTouchEnd(Vector2 point)`
 * `void OnTouch(Vector2 point)` - The touch is down and either moved or stayed stationary
 * `void OnTouchExit(Vector2 point)` - The touch left the screen
 
@@ -51,4 +51,16 @@ example, to receive touches for general actions, the main menu uses the TouchInp
 and an empty game object with a full-screen BoxCollider2D to receive the touch message that
 begins the game.
 
-###
+*Notes*
+
+One problem you will run into with this demo and the TouchInputDispatcher is that a quick
+movement with your finger will cause you to lose contact with the object you were dragging.
+Once the finger has left the collider area it no longer sends messages to the game object,
+so it doesn't update its position. I'll leave this up to you to solve. :)
+
+### LevelManager
+
+The `LevelManager` coordinates progression through each level in the game. It is instantiated
+once on its own empty game object in each scene.
+
+
