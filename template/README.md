@@ -6,7 +6,8 @@ This directory contains helpful code for any Unity3d project.
 # Getting Started
 
 Copy the Assets directory from this template into your new project and merge the directories
-together. In C# source files where you want to use these extensions, add `using Jolly;`.
+together. In C# source files where you want to use these extensions, add `using Jolly;` to the
+top of the file.
 
 # JollyDebug
 
@@ -48,6 +49,13 @@ the source code, but for most purposes it is sufficient to simply use ToString o
 
 This method raises an exception if the condition input is not true.
 
+```
+void Start ()
+{
+	JollyDebug.Assert(null != this.ReferencedGameObject);
+}
+```
+
 ### JollyDebugInspector
 
 The inspector is an extension that customizes the rendering of the JollyDebug
@@ -66,4 +74,3 @@ This is a static container class for adding extension methods to the `Vector3` c
  one method at the moment: `xyz`, which returns a new `Vector3` with a given Z component value.
 
 
- 
