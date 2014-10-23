@@ -59,6 +59,12 @@ rotates and this object isn't always below the delta.
 A `Player` has an `OnCollected(Collectable collectable)` function that is intentionally
 stubbed out (empty). Feel free to use this for whatever you like!
 
+### PlayerController
+
+The controller is actually the only place where controls are explicitly differentiated between
+one player and another. The attribute `PlayerNumber` is used to determine which set of controls
+to use to control the attached `Player`.
+
 ### FollowPlayers
 
 This behavior is attached to the main camera and does very simple camera-following. It smoothly

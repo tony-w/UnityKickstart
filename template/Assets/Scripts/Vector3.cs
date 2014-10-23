@@ -25,6 +25,11 @@ namespace Jolly
 		{
 			return new Vector3(xValue, yValue, self.z);
 		}
+
+		public static Vector2 xy(this Vector3 self)
+		{
+			return new Vector2(self.x, self.y);
+		}
 	}
 }
 
