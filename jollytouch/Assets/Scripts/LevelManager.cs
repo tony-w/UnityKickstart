@@ -7,23 +7,19 @@ public class LevelManager : MonoBehaviour
 
 	public string NextLevelSceneName;
 
-	private bool _levelIsComplete = false;
-	public bool LevelIsComplete
+	void Update ()
 	{
-		get
+		if (!this.LevelIsComplete)
 		{
-			if (_levelIsComplete)
-			{
-				return true;
-			}
-			this._levelIsComplete = this.AllSunsIndicateLevelIsComplete;
-			if (this._levelIsComplete)
+			this.LevelIsComplete = this.AllSunsIndicateLevelIsComplete;
+			if (this.LevelIsComplete)
 			{
 				this.StartCoroutine("EndLevelAndLoadNextLevel");
 			}
-			return _levelIsComplete;
 		}
 	}
+
+	public bool LevelIsComplete;
 
 	private bool AllSunsIndicateLevelIsComplete
 	{
