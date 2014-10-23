@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Jolly;
 
 public class LevelManager : MonoBehaviour
 {
 	public Sun[] SunsToTestIfLevelIsComplete;
 
 	public string NextLevelSceneName;
+
+	void Start ()
+	{
+		JollyDebug.Assert (this.gameObject.name.Equals ("LevelManager"));
+	}
 
 	void Update ()
 	{

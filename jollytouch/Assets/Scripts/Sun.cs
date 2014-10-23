@@ -42,7 +42,6 @@ public class Sun : MonoBehaviour
 		}
 		totalObjectsPerSecond /= totalDestinations;
 		JollyDebug.Assert (totalObjectsPerSecond > 0);
-		Debug.Log (string.Format ("tops = {0}", totalObjectsPerSecond));
 		this.PowerIncreasePerUnit = 1.0f / totalObjectsPerSecond;
 
 		this.InitialDiscScale = this.EmptyDisc.transform.localScale.x;

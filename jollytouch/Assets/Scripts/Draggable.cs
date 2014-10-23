@@ -24,18 +24,30 @@ public class Draggable : MonoBehaviour
 
 	void OnTouchDown (Vector2 position)
 	{
+		if (LevelManager.Instance.LevelIsComplete)
+		{
+			return;
+		}
 		this.lastTouch = position;
 		this.spriteRenderer.color = this.touchedColor;
 	}
 
 	void OnTouch (Vector2 position)
 	{
+		if (LevelManager.Instance.LevelIsComplete)
+		{
+			return;
+		}
 		this.transform.position += (position - this.lastTouch).xyz(0.0f);
 		this.lastTouch = position;
 	}
 
 	void OnTouchUp (Vector2 position)
 	{
+		if (LevelManager.Instance.LevelIsComplete)
+		{
+			return;
+		}
 		this.RestoreOriginalColor();
 	}
 
