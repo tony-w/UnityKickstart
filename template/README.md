@@ -68,9 +68,9 @@ This is a static container class for adding extension methods to the `Vector3` c
  * `SetXY` - Return a new `Vector3` with both X and Y set to new values
  * `xy` - Return a new `Vector2` from just the X and Y components
 
- # Vector2Ext
+# Vector2Ext
 
- Similarly to `Vector3Ext`, this is a container class for extension methods of `Vector2`. It adds just
- one method at the moment: `xyz`, which returns a new `Vector3` with a given Z component value.
+Similarly to `Vector3Ext`, this is a container class for extension methods of `Vector2`. It adds just
+one method at the moment: `xyz`, which returns a new `Vector3` with a given Z component value.
 
 
