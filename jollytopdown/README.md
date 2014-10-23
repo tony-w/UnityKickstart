@@ -1,6 +1,8 @@
 JollyTopdown
 ==========
 
+![JollyTouch](./jollytopdownpreview.png?raw=true)
+
 JollyTopdown is a 3D, top-down direct control sandbox game. Players play as either
 a red or blue sphere that rolls, bounces and jumps across a snowy landscape to
 collect hovering coins.
