@@ -102,7 +102,11 @@ set the y position of `DiscToFill`. A cleaner version of this code would use bot
 sprites instead.
 
 
-### 
+## Other Components
+
+The rest of the components should be fairly self-explanatory. For documentation on the
+common components (`JollyDebug`, `Vector3`, `Vector2`) please see the `../template/`
+directory.
 
 
 
