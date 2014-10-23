@@ -25,10 +25,19 @@ Player 2:
 
 ## Scenes
 
+`titlescreen` and `level1` are the only two scenes, with the former being the way the game starts.
+It functions only to load the first level. There is no way to win or lose the level, but falling
+off of the platforms makes the robots no longer controllable.
 
 ## Major Components
 
+### Hero
 
+### HeroController
+
+### CameraFollow
+
+### TitleScreen
 
 ## Other Components
 
