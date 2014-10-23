@@ -31,6 +31,11 @@ mainmenu -> level1
 The main menu scene starts the game when the user taps the screen. Each level plays out
 sequentially, ending when the sun or suns have been fully powered.
 
+In each level, the game only has two states: "running" and "complete". As long as the
+level is not complete, the stream emitters run and the game is interactible. Once all
+the suns in a level have been powered, the level is complete and the emitters stop.
+After a delay in the Complete state, the game progresses to the next level.
+
 ## Major Components
 
 ### TouchInputDispatcher
@@ -61,6 +66,45 @@ so it doesn't update its position. I'll leave this up to you to solve. :)
 ### LevelManager
 
 The `LevelManager` coordinates progression through each level in the game. It is instantiated
-once on its own empty game object in each scene.
+once on its own empty game object in each scene. By querying `LevelManager.Instance.LevelIsComplete`,
+other components can understand the state of the current level. For example, the
+`SpawnsObjectStream` component will create a stream of objects until this flag is `false`.
+
+The `LevelManager` determines whether the level is complete by quering `IsFullyPowered` on
+all of the `Sun` components on objects with the "Sun" tag. If all flags are true, the level
+is complete.
+
+Finally, the next level to load is entered as a string into this class.
+
+### Sun
+
+Each sun game object is managed by a `Sun` component that has a number of responsibilities:
+
+* Track the current power level of the sun based on incoming streams
+* Fill the sun's disc from bottom to top and change its color depending on power level
+* Pulse the size of the sun if it is currently receiving power
+
+The easiest way to understand how it performs each of these is to read the code! Briefly,
+the sun has a circle collider that acts as a trigger, which invokes `OnTriggerEnter2D`
+whenever a ball overlaps the sun's area. This destroys the ball and adds a record to
+an internal array of recent inputs. This array is read each frame to determine the
+rate of input over the last second and compared to the expected input rate to determine
+the absolute power level. The displayed power level is interpolated toward the absolute
+power level smoothly to make the effect nice. This displayed power level is then used
+to create a new sprite from the full-disc source image with only some portion revealed.
+This new sprite is assigned to the DiscToFill game object so that it is rendered.
+
+*Notes*
+
+`FillDisc` is more complicated than it needs to be, because I chose to make all the sprites
+center-pivoted instead of bottom-pivoted. This is why there is additional computation to
+set the y position of `DiscToFill`. A cleaner version of this code would use bottom-pivoted
+sprites instead.
+
+
+### 
+
+
+
 
 

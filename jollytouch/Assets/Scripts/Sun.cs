@@ -17,7 +17,7 @@ public class Sun : MonoBehaviour
 	private float Power = 0.0f;
 	private float LerpedPower = 0.0f;
 
-	public bool LevelIsComplete
+	public bool IsFullyPowered
 	{
 		get; private set;
 	}
@@ -56,11 +56,11 @@ public class Sun : MonoBehaviour
 
 	void ComputePower ()
 	{
-		bool levelIsComplete = this.LevelIsComplete || this.LerpedPower > 0.90f;
+		bool levelIsComplete = this.IsFullyPowered || this.LerpedPower > 0.90f;
 		if (levelIsComplete)
 		{
 			this.Power = 1.0f;
-			this.LevelIsComplete = true;
+			this.IsFullyPowered = true;
 		}
 		else
 		{
@@ -124,8 +124,6 @@ public class Sun : MonoBehaviour
 			spriteRenderer.color = value;
 		}
 	}
-
-
 
 	void OnTriggerEnter2D (Collider2D other)
 	{

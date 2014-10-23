@@ -4,8 +4,6 @@ using Jolly;
 
 public class LevelManager : MonoBehaviour
 {
-	public Sun[] SunsToTestIfLevelIsComplete;
-
 	public string NextLevelSceneName;
 
 	void Start ()
@@ -25,15 +23,20 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
-	public bool LevelIsComplete;
+	public bool LevelIsComplete
+	{
+		get; private set;
+	}
 
 	private bool AllSunsIndicateLevelIsComplete
 	{
 		get
 		{
-			foreach (Sun sun in this.SunsToTestIfLevelIsComplete)
+			GameObject[] sunsToTestIfLevelIsComplete = GameObject.FindGameObjectsWithTag("Sun");
+			foreach (GameObject go in sunsToTestIfLevelIsComplete)
 			{
-				if (!sun.LevelIsComplete)
+				Sun sun = go.GetComponent<Sun>();
+				if (!sun.IsFullyPowered)
 				{
 					return false;
 				}
