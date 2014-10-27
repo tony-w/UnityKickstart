@@ -16,11 +16,18 @@ However, if you are more comfortable with Unityscript, go ahead and use that ins
 
 # General Unity Tips
 
+## General stuff
+
+* Make sure you [Configure the Unity editor and .gitignore properly](http://stackoverflow.com/questions/18225126/how-to-use-git-for-unity3d-source-control)
+* Try to make every scene in your game so it can be run by itself. It makes design iteration a lot easier. This means
+  not using `LoadLevelAdditive` and providing a fallback for when objects marked `DontDestroyOnLoad` don't exist.
+* Push as much design into the Unity editor as possible--don't hide your levels or interfaces in code.
+
 ## First-Time User Tips for Programmers
 
 Here's a quick rundown of things you absolutely need to know when getting started with Unity that you might not find in
 usual tutorials:
-* If you're using Git for source control, make sure you [Configure the editor and .gitignore properly](http://stackoverflow.com/questions/18225126/how-to-use-git-for-unity3d-source-control)
+
 * `Prefab` is to `GameObject` as class is to instance. However, a `GameObject` without a prefab is like an instance of the
   global root class type `object`.
 * Empty `GameObject`s are quite common. Use them to execute code in the scene or create world-location references such
@@ -29,9 +36,7 @@ usual tutorials:
   avoid having constants in code and use this instead.
 * Make separate, reusable components whenever possible. Doing so makes it easy to build new functionality by just
   dragging components on to an object and hooking up references.
-* All physics-related code should be in the `FixedUpdate` function.
+* All physics-related code should be in `FixedUpdate`
 * Your camera is jittery because it should only be moved in `OnPreCull`
+* The built-in Unity GUI is redrawn every frame using code. There is no GUI editor like in Xcode or Visual Studio.
 * MonoBehaviour is spelled with a 'u'. If you get errors about `MonoBehavior` not being defined, that's why.
-* The built-in Unity GUI is redrawn every frame from scratch. There is no GUI editor like in Xcode or Visual Studio.
-
-## 
