@@ -65,6 +65,11 @@ The controller is actually the only place where controls are explicitly differen
 one player and another. The attribute `PlayerNumber` is used to determine which set of controls
 to use to control the attached `Player`.
 
+### HeadsUpDisplay
+
+This component renders the GUI with player scores and the game reset button. `HeadsUpDisplay`
+resides on an empty GameObject specifically for this purpose.
+
 ### FollowPlayers
 
 This behavior is attached to the main camera and does very simple camera-following. It smoothly

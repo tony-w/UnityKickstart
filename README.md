@@ -21,6 +21,12 @@ However, if you are more comfortable with Unityscript, go ahead and use that ins
 Here's a quick rundown of things you absolutely need to know when getting started with Unity that you might not find in
 usual tutorials:
 * If you're using Git for source control, make sure you [Configure the editor and .gitignore properly](http://stackoverflow.com/questions/18225126/how-to-use-git-for-unity3d-source-control)
-* `Prefab` is to `GameObject` as `class` is to instance.
-
-# Componentize
+* `Prefab` is to `GameObject` as class is to instance. However, a `GameObject` without a prefab is like an instance of the
+  global root class type `object`.
+* Empty `GameObject`s are quite common. Use them to create world-location references (e.g. setting a spawn point)
+  or to execute code.
+* To make a setting configurable in the Unity editor, just make it a public variable. For the most part, you should
+  avoid having constants in code and use this instead.
+* Make separate, reusable components whenever possible. Doing so makes it easy to build new functionality by just
+  dragging components on to an object and hooking up references.
+* MonoBehaviour is spelled with a 'u'. If you get errors about `MonoBehavior` not being defined, that's why.
