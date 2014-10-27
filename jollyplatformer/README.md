@@ -71,11 +71,59 @@ abstraction is useful because:
 
 ### CameraFollow
 
+The `CameraFollow` behavior is attached to the `Main Camera` to allow it to keep all `Hero`
+characters on screen. It tracks the center point of the heroes horizontally and vertically, and
+will zoom out to accommodate characters that get further separated. The main camera is orthogonal
+so instead of moving the camera further back on the Z axis (which will have no effect), `CameraFollow`
+adjusts the `orthographicSize` property of the camera.
+
+This class is designed so that more heroes can be tracked simply by adding members to the
+`HeroesToFollow` array.
+
 ### TitleScreen
+
+The first screen that loads in the game is managed by the `TitleScreen`. This object renders
+a simple textured button using Unity's built-in GUI components.
 
 ## Other Components
 
 For documentation on the common components (`JollyDebug`, `Vector3`, `Vector2`) please see
 the `../template/` directory.
 
+## Notes
 
+### Player Selection
+
+If you want to have a variable number of heroes in your game, create an instance for each player
+and delete heroes that will be unused at the start of the map. Don't forget to also add a check
+to classes that reference heroes, such as the `CameraFollow`, that rebuilds the `HeroesToFollow`
+array with only valid object references.
+
+### Levels
+
+To support multiple levels, check out the `LevelManager` class from the JollyTouch sample. If
+you want to add collectable items like coins, there is example code in JollyTopdown for you
+to use.
+
+### Populating your world
+
+Enemies in the game can work very similarly to players. To create an Enemy, you could:
+ * Duplicate everything about a Hero as an Enemy (prefab, `Hero`, `HeroController`)
+   and reassign references on the prefab to these new classes
+ * Drag the Enemy prefab into the scene
+ * Change the internals of the `EnemyController` (or whatever you called your duplicate `HeroController`)
+   to return commands to execute based on AI.
+
+Writing the AI is as complicated as you make it. A simple Goomba-like enemy that just moves
+back and forth is a good place to start.
+
+### Making it Move
+
+Unity has built-in support for creating animated 2d graphics. There are two primary methods:
+keyframe and spritesheet. In the keyframe method, each sprite has many parts (e.g. arms, legs, feet, body, head)
+that are separated in the source image file and are to be animated individually in Unity.
+A spritesheet, on the other hand, is like a GIF: each frame of the animation is drawn
+individually and Unity flips between frames rapidly to display the animation. The spritesheet
+method is much more art-intensive, but either are supported. To get started, search for
+"Unity 2D Sprite Animation" and check out some of Unity's documentation videos. Their 2d sidescroller
+project is also very helpful here.
