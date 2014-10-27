@@ -1,37 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Jolly;
 
 public class LevelManager : MonoBehaviour
 {
-	public Sun[] SunsToTestIfLevelIsComplete;
-
 	public string NextLevelSceneName;
 
-	private bool _levelIsComplete = false;
-	public bool LevelIsComplete
+	void Start ()
 	{
-		get
+		JollyDebug.Assert (this.gameObject.name.Equals ("LevelManager"));
+	}
+
+	void Update ()
+	{
+		if (!this.LevelIsComplete)
 		{
-			if (_levelIsComplete)
-			{
-				return true;
-			}
-			this._levelIsComplete = this.AllSunsIndicateLevelIsComplete;
-			if (this._levelIsComplete)
+			this.LevelIsComplete = this.AllSunsIndicateLevelIsComplete;
+			if (this.LevelIsComplete)
 			{
 				this.StartCoroutine("EndLevelAndLoadNextLevel");
 			}
-			return _levelIsComplete;
 		}
+	}
+
+	public bool LevelIsComplete
+	{
+		get; private set;
 	}
 
 	private bool AllSunsIndicateLevelIsComplete
 	{
 		get
 		{
-			foreach (Sun sun in this.SunsToTestIfLevelIsComplete)
+			GameObject[] sunsToTestIfLevelIsComplete = GameObject.FindGameObjectsWithTag("Sun");
+			foreach (GameObject go in sunsToTestIfLevelIsComplete)
 			{
-				if (!sun.LevelIsComplete)
+				Sun sun = go.GetComponent<Sun>();
+				if (!sun.IsFullyPowered)
 				{
 					return false;
 				}

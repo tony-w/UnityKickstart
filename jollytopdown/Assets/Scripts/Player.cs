@@ -14,6 +14,15 @@ public class Player : MonoBehaviour
 
 	public bool IsOnGround { get; private set; }
 
+	public Color HUDColor;
+
+	public int Score { get; private set; }
+
+	public Player ()
+	{
+		this.Score = 0;
+	}
+
 	void Start ()
 	{
 		this.PlayerController = this.GetComponent<PlayerController>();
@@ -59,5 +68,6 @@ public class Player : MonoBehaviour
 
 	public void OnCollected(Collectable collectable)
 	{
+		this.Score++;
 	}
 }
