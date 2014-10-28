@@ -7,6 +7,78 @@ namespace Jolly
 {
 	public class JollyDebug : MonoBehaviour
 	{
+		// Add strings to this array to make "GetFlag", "SetFlag", "ExecuteIf", "Log*If" work with these flags.
+		private string[] Flags = new string[] {
+		};
+
+		private bool[] FlagValues;
+
+		private void InitializeSortedFlags ()
+		{
+			System.Array.Sort(this.Flags);
+			this.FlagValues = new bool[this.Flags.Length];
+			for (int i = 0; i < this.Flags.Length; ++i)
+			{
+				this.FlagValues[i] = false;
+			}
+		}
+
+		public IEnumerator DisplayFlagsEnumerator ()
+		{
+			return this.Flags.GetEnumerator();
+		}
+
+		private int IndexOfFlag(string flag)
+		{
+			return System.Array.BinarySearch(this.Flags, flag);
+		}
+
+		public static bool GetFlag(string flag)
+		{
+			JollyDebug self = JollyDebug.Instance;
+			int index = self.IndexOfFlag(flag);
+			if (index < 0)
+			{
+				return false;
+			}
+			return !self.FlagValues[index];
+		}
+
+		public static void SetFlag(string flag, bool value)
+		{
+			JollyDebug self = JollyDebug.Instance;
+			int index = self.IndexOfFlag(flag);
+			if (index >= 0)
+			{
+				self.FlagValues[index] = value;
+			}
+		}
+
+		private bool EvaluateFlagExpression(string flagExpression)
+		{
+			string[] substrings = flagExpression.Split (new char[] {' '}, System.StringSplitOptions.RemoveEmptyEntries);
+			for (int i = 0; i < substrings.Length; ++i)
+			{
+				int index = this.IndexOfFlag(substrings[i]);
+				JollyDebug.Assert (index > 0, "substring[{0}] == {1} not found in debug flags", i, substrings[i]);
+				if (this.FlagValues[i])
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void ExecuteIf(string flagExpression, System.Action callback)
+		{
+			JollyDebug self = JollyDebug.Instance;
+			if (self.EvaluateFlagExpression(flagExpression))
+			{
+				callback.Invoke ();
+			}
+		}
+
 		public class Expression
 		{
 			public string Name;
@@ -123,7 +195,6 @@ namespace Jolly
 			}
 		}
 		
-		
 		private ArrayList ExpressionsByOwnerList = new ArrayList();
 		public IEnumerator ExpressionsByOwnerEnumerator
 		{
@@ -178,7 +249,6 @@ namespace Jolly
 			return newExpressionsByOwner;
 		}
 		
-		
 		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
 		public static void Watch (MonoBehaviour owner, string name, System.Func<float> returnsFloat)
 		{
@@ -221,6 +291,119 @@ namespace Jolly
 			self.GetExpressionsForOwner(owner).GetExpression(name).SetLastValue(boolValue);
 		}
 		
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void Assert (bool expression, string message = "", params object[] args)
+		{
+			if (expression)
+			{
+				return;
+			}
+			string linewiseStackTrace = StackTraceUtility.ExtractStackTrace();
+			string firstLine = null;
+			{
+				string [] lines = linewiseStackTrace.Split(new char[] {'\n'});
+				{
+					string [] skippedFirstLine = new string [lines.Length - 1];
+					System.Array.Copy(lines, 1, skippedFirstLine, 0, skippedFirstLine.Length);
+					lines = skippedFirstLine;
+				}
+				firstLine = lines[0];
+				linewiseStackTrace = string.Join("\n", lines);
+			}
+			message = string.Format (message, args);
+			JollyDebug.LogException("ASSERTION FAILED in {0}\n{1}\n{2}", firstLine, message, linewiseStackTrace);
+		}
+		
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void Log(string message, params object[] args)
+		{
+			string formattedMessage = string.Format(message, args);
+			Debug.Log(formattedMessage);
+		}
+		
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void LogWarning(string message, params object[] args)
+		{
+			string formattedMessage = string.Format(message, args);
+			Debug.LogWarning(formattedMessage);
+		}
+		
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void LogError(string message, params object[] args)
+		{
+			string formattedMessage = string.Format(message, args);
+			Debug.LogError(formattedMessage);
+		}
+		
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void LogException(string message, params object[] args)
+		{
+			string formattedMessage = string.Format (message, args);
+			JollyDebug self = JollyDebug.Instance;
+			self.ExceptionToDisplayOnScreen = formattedMessage;
+			Debug.LogError(formattedMessage);
+			Debug.Break ();
+		}
+
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void LogIf(string flagExpression, string message, params object[] args)
+		{
+			JollyDebug self = JollyDebug.Instance;
+			if (self.EvaluateFlagExpression(flagExpression))
+			{
+				JollyDebug.Log (message, args);
+			}
+		}
+		
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void LogWarningIf(string flagExpression, string message, params object[] args)
+		{
+			JollyDebug self = JollyDebug.Instance;
+			if (self.EvaluateFlagExpression(flagExpression))
+			{
+				JollyDebug.LogWarning (message, args);
+			}
+		}
+		
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void LogErrorIf(string flagExpression, string message, params object[] args)
+		{
+			JollyDebug self = JollyDebug.Instance;
+			if (self.EvaluateFlagExpression(flagExpression))
+			{
+				JollyDebug.LogError (message, args);
+			}
+		}
+		
+		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
+		public static void LogExceptionIf(string flagExpression, string message, params object[] args)
+		{
+			JollyDebug self = JollyDebug.Instance;
+			if (self.EvaluateFlagExpression(flagExpression))
+			{
+				JollyDebug.LogException (message, args);
+			}
+		}
+		
+		void Awake()
+		{
+			this.InitializeSortedFlags();
+			Application.RegisterLogCallback(HandleException);
+		}
+		
+		void OnLevelWasLoaded()
+		{
+			Application.RegisterLogCallback(HandleException);
+		}
+		
+		private void HandleException(string condition, string stackTrace, LogType type)
+		{
+			if (type == LogType.Exception)
+			{
+				JollyDebug.LogException("{0}: {1}\n{2}", type, condition, stackTrace);
+			}
+		}
+		
 		void Update ()
 		{
 			for (int i = this.ExpressionsByOwnerList.Count - 1; i >= 0; --i)
@@ -237,13 +420,30 @@ namespace Jolly
 			}
 		}
 		
-		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
-		public static void Assert(bool expression)
+		private string ExceptionToDisplayOnScreen;
+		
+		void OnGUI ()
 		{
-			if (!expression)
+			if (null == this.ExceptionToDisplayOnScreen)
 			{
-				throw new UnityException("Assertion failed!");
+				return;
 			}
+			
+			GUILayout.BeginArea (new Rect(0,0,Screen.width,Screen.height));
+
+			GUIStyle style = new GUIStyle("textArea");
+			style.normal.textColor = Color.white;
+			
+			GUI.Label (new Rect(Screen.width/6.0f, Screen.height/6.0f, Screen.width*2/3.0f, Screen.height*2/3.0f), this.ExceptionToDisplayOnScreen, style);
+			float width = 100.0f;
+			if (GUI.Button (new Rect((Screen.width - width)/2.0f, Screen.height * 5.1f / 6.0f, width, 40.0f), "Reset"))
+			{
+				this.ExceptionToDisplayOnScreen = null;
+			}
+			
+			GUILayout.EndArea ();
+			
 		}
 	}
+	
 }
