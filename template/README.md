@@ -27,7 +27,8 @@ Example of a 'pull'-type watch:
 ```
 void Start ()
 {
-	JollyDebug.Watch (this, "Location", delegate () {
+	JollyDebug.Watch (this, "Location", delegate ()
+	{
 		return this.gameObject.transform.position.ToString();
 	});
 }
