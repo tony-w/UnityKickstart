@@ -96,7 +96,7 @@ This new sprite is assigned to the DiscToFill game object so that it is rendered
 
 *Notes*
 
-`FillDisc` is more complicated than it needs to be, because I chose to make all the sprites
+`FillDisc` is more complicated than it needs to be because I chose to make all the sprites
 center-pivoted instead of bottom-pivoted. This is why there is additional computation to
 set the y position of `DiscToFill`. A cleaner version of this code would use bottom-pivoted
 sprites instead.

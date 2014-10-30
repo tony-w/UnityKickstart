@@ -52,3 +52,19 @@ usual tutorials:
 * It's best to spawn objects as children of another game object to keep them organized in the scene hierarchy and make
   debugging using the editor easier. To do this, set the `GameObject.transform.parent` to another `GameObject.transform`. It
   is perfectly fine to use top-level empty game object containers to do this.
+* Don't do any creation work (such as playing a sound) in `OnDestroy`
+* If you want to load a static text file, don't reference it by name--use `public TextAsset MyTextAsset;`, hook up the
+  reference in Unity, and access its contents with `this.MyTextAsset.text`.
+
+### Style Suggestions
+
+* Use "this.MemberName" to reference any member
+* If a static class function references an instance of the class itself, call the variable 'self'
+* If a variable has accessors and a backing variable, use `_lowerCamelCase` for the variable name. e.g.:
+```
+private int _someValue;
+public SomeValue {
+  get { return _someValue; }
+  set { _someValue = value; }
+}
+```
