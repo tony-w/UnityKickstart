@@ -78,11 +78,11 @@ usual tutorials:
 
 ### Style Suggestions
 
-* Use "this.MemberName" to reference any membe
+* Use "this.MemberName" to reference any member
 * If a static class function references an instance of the class itself, call the variable 'self'
 * If a variable is public, use `UpperCamelCase` for the variable name
 * If a variable is private or protected, use `lowerCamelCase` for the variable name
-* If a variable has accessors and a backing variable, use `_lowerCamelCase` for the variable name. e.g.:
+* If a variable has accessors and is only a private backing variable, use `_lowerCamelCase` for the variable name. e.g.:
 ```
 private int _someValue;
 public SomeValue
