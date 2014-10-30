@@ -65,8 +65,6 @@ usual tutorials:
   dragging components on to an object and hooking up references.
 * All physics-related code should be in `FixedUpdate`
 * Your camera is jittery because it should only be moved in `OnPreCull`
-* Your players are jittery because forces applied are only computed after OnFixedUpdate, but you are clamping the velocity
-  inside that function. Move velocity clamping to `Update` instead (a notable exception to physics-code in `FixedUpdate`)
 * The built-in Unity GUI is redrawn every frame using code. There is no GUI editor like in Xcode or Visual Studio.
 * MonoBehaviour is spelled with a 'u'. If you get errors about `MonoBehavior` not being defined, that's why.
 * It's best to spawn objects as children of another game object to keep them organized in the scene hierarchy and make
@@ -80,11 +78,11 @@ usual tutorials:
 
 ### Style Suggestions
 
-* Use "this.MemberName" to reference any membe
+* Use "this.MemberName" to reference any member
 * If a static class function references an instance of the class itself, call the variable 'self'
 * If a variable is public, use `UpperCamelCase` for the variable name
 * If a variable is private or protected, use `lowerCamelCase` for the variable name
-* If a variable has accessors and a backing variable, use `_lowerCamelCase` for the variable name. e.g.:
+* If a variable has accessors and is only a private backing variable, use `_lowerCamelCase` for the variable name. e.g.:
 ```
 private int _someValue;
 public SomeValue
@@ -98,16 +96,16 @@ public SomeValue
 
 ## Unity
 
-https://unity3d.com/learn/documentation
-http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/
-http://learnunity2d.com/
-http://www.unity3dstudent.com/
+https://unity3d.com/learn/documentation  
+http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/  
+http://learnunity2d.com/  
+http://www.unity3dstudent.com/  
 
 ## Free Art
 
-http://letsmakegames.org/resources/art-assets-for-game-developers/
-http://www.pixelprospector.com/the-big-list-of-royalty-free-graphics/
+http://letsmakegames.org/resources/art-assets-for-game-developers/  
+http://www.pixelprospector.com/the-big-list-of-royalty-free-graphics/  
 
 ## Free Sounds
 
-https://www.makegameswith.us/gamernews/281/top-20-best-free-music-and-sound-effect-resources
+https://www.makegameswith.us/gamernews/281/top-20-best-free-music-and-sound-effect-resources  
