@@ -65,8 +65,6 @@ usual tutorials:
   dragging components on to an object and hooking up references.
 * All physics-related code should be in `FixedUpdate`
 * Your camera is jittery because it should only be moved in `OnPreCull`
-* Your players are jittery because forces applied are only computed after OnFixedUpdate, but you are clamping the velocity
-  inside that function. Move velocity clamping to `Update` instead (a notable exception to physics-code in `FixedUpdate`)
 * The built-in Unity GUI is redrawn every frame using code. There is no GUI editor like in Xcode or Visual Studio.
 * MonoBehaviour is spelled with a 'u'. If you get errors about `MonoBehavior` not being defined, that's why.
 * It's best to spawn objects as children of another game object to keep them organized in the scene hierarchy and make
