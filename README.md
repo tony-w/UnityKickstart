@@ -98,16 +98,16 @@ public SomeValue
 
 ## Unity
 
-https://unity3d.com/learn/documentation
-http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/
-http://learnunity2d.com/
-http://www.unity3dstudent.com/
+https://unity3d.com/learn/documentation  
+http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/  
+http://learnunity2d.com/  
+http://www.unity3dstudent.com/  
 
 ## Free Art
 
-http://letsmakegames.org/resources/art-assets-for-game-developers/
-http://www.pixelprospector.com/the-big-list-of-royalty-free-graphics/
+http://letsmakegames.org/resources/art-assets-for-game-developers/  
+http://www.pixelprospector.com/the-big-list-of-royalty-free-graphics/  
 
 ## Free Sounds
 
-https://www.makegameswith.us/gamernews/281/top-20-best-free-music-and-sound-effect-resources
+https://www.makegameswith.us/gamernews/281/top-20-best-free-music-and-sound-effect-resources  
