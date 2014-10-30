@@ -3,7 +3,7 @@ JollyTouch
 
 ![JollyTouch](./jollytouchpreview.png?raw=true)
 
-This project demonstrates a simple touch-based 2d game. It includes a main menu and 
+This project demonstrates a simple touch-based 2d game. It includes a main menu and
 a progression of several levels. The goal of each level is to move the large circles
 so that they bounce streams of small white balls into the sun to power it up.
 
@@ -14,6 +14,15 @@ Demonstrated Features:
  * Progressively revealing sprite using clipping area (progress bar)
  * Basic 2D physics
  * Creating and destroying game objects
+
+# Where to start
+
+Load up the project in the Unity editor and open the Assets/Library/mainmenu.scene and hit play
+to test the game.
+Load up the Assets/Library/level1.scene and browse the objects in the scene, specifically paying attention
+to draggable player object, the sun, spawn point and level manager and their respective components.
+Look at the Bouncer and Player prefabs, which act as the template for those objects when they need to
+be created.
 
 
 # Architecture

@@ -29,6 +29,17 @@ Player 2:
  * arrow keys for movement
  * spacebar or '/' to jump
 
+# Where to start
+
+Load up the project in the Unity editor and open the Assets/Library/ingame.scene and hit play
+to test the game.
+Browse the objects in the scene, specifically paying attention to the player objects, their components
+and their child objects.
+Look at the Coin and Hero prefabs, which act as the template for those objects when they need to
+be created.
+Look at the materials, including a bouncy material, textures and sounds to learn about how a 3D game
+with sound is built.
+
 
 # Architecture
 

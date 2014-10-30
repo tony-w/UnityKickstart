@@ -3,8 +3,8 @@ JollyPlatformer
 
 ![JollyPlatformer](./jollyplatformerpreview.png?raw=true)
 
-JollyPlatformer
-
+JollyPlatformer is a two player plaformer. Players can move, jump, and shoot stars
+at one another.
 
 Controls
 --------
@@ -19,6 +19,15 @@ Player 2:
  * left/right keys for movement
  * up to jump
  * down to shoot stars
+
+# Where to start
+
+Load up the project in the Unity editor and open the Assets/Library/titlescreen.scene and hit play
+to test the game.
+Load up the Assets/Library/level1.scene to see the objects that make up the game, specifically paying
+attention to the Hero objects, their components and their child objects.
+Look at the Projectile and Hero prefabs, which act as the template for those objects when they need to
+be created.
 
 
 # Architecture
@@ -84,6 +93,12 @@ This class is designed so that more heroes can be tracked simply by adding membe
 
 The first screen that loads in the game is managed by the `TitleScreen`. This object renders
 a simple textured button using Unity's built-in GUI components.
+
+### Clouds
+
+The cloud objects are created using a single texture that is then broken up into separate objects
+using Unity's built in sprite manager. You can see how this is done by clicking on the `Sprite Editor`
+button on the cloud texture.
 
 ## Other Components
 
