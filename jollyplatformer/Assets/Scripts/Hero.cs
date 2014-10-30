@@ -28,11 +28,12 @@ public class Hero : MonoBehaviour
 	{
 		this.HeroController = this.GetComponent<HeroController>();
 
-		JollyDebug.Watch (this, "FacingRight", delegate () {
+		JollyDebug.Watch (this, "FacingRight", delegate ()
+		{
 			return this.FacingRight;
 		});
 	}
-	
+
 	void Update ()
 	{
 		bool grounded = Physics2D.Linecast(this.transform.position, this.GroundDetector.transform.position, 1 << LayerMask.NameToLayer ("Ground"));

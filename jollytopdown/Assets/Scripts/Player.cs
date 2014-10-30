@@ -27,11 +27,12 @@ public class Player : MonoBehaviour
 	{
 		this.PlayerController = this.GetComponent<PlayerController>();
 
-		JollyDebug.Watch (this, "IsOnGround", delegate () {
+		JollyDebug.Watch (this, "IsOnGround", delegate ()
+		{
 			return this.IsOnGround;
 		});
 	}
-	
+
 	void Update ()
 	{
 		Ray ray = new Ray(this.transform.position, Vector3.down);
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour
 		if (Mathf.Abs(this.rigidbody.velocity.x) > maxSpeedX)
 		{
 			this.rigidbody.velocity = new Vector3(Mathf.Sign (this.rigidbody.velocity.x) * maxSpeedX, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
-		}	
+		}
 
 		float maxSpeedZ = Mathf.Abs (this.MaxSpeed * v);
 		if (Mathf.Abs(this.rigidbody.velocity.z) > maxSpeedZ)

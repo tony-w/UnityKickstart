@@ -4,12 +4,11 @@ using Jolly;
 
 public class TouchInputDispatcher : MonoBehaviour
 {
+	void Start ()
+	{
 
-	// Use this for initialization
-	void Start () {
-	
 	}
-	
+
 	void Update ()
 	{
 		foreach (Touch touch in Input.touches)

@@ -3,9 +3,10 @@ using System.Collections;
 using UnityEngine;
 using Jolly;
 
-[CustomEditor(typeof(JollyDebug))] 
-public class JollyDebugInspector : Editor {
-	
+[CustomEditor(typeof(JollyDebug))]
+public class JollyDebugInspector : Editor
+{
+
 	public override void OnInspectorGUI()
 	{
 		JollyDebug jollyDebug = (JollyDebug)this.target;
@@ -45,7 +46,7 @@ public class JollyDebugInspector : Editor {
 			}
 		}
 	}
-	
+
 	public override bool RequiresConstantRepaint ()
 	{
 		return true;
