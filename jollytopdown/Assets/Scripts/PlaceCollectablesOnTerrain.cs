@@ -5,6 +5,7 @@ using Jolly;
 public class PlaceCollectablesOnTerrain : MonoBehaviour
 {
 	public GameObject CollectableToPlace;
+	public GameObject ParentGameObject;
 	public float SpawnRadius;
 	public float HeightAboveGround;
 	public int SpawnCount;
@@ -22,6 +23,7 @@ public class PlaceCollectablesOnTerrain : MonoBehaviour
 
 			GameObject collectableObject = (GameObject)GameObject.Instantiate(this.CollectableToPlace, worldPosition, this.CollectableToPlace.transform.rotation);
 			collectableObject.isStatic = true;
+			collectableObject.transform.parent = this.ParentGameObject.transform;
 		}
 	}
 }

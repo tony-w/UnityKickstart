@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
 		this.SetCamera(focalPoint, zoom);
 	}
 
-	void OnPreRender ()
+	void OnPreCull ()
 	{
 		float lerpFactor = Time.deltaTime * this.FollowLerpFactor;
 		this.camera.transform.position = Vector3.Lerp(this.camera.transform.position, this.TargetCameraPosition, lerpFactor);
