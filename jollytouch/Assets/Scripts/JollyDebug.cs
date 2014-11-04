@@ -41,7 +41,7 @@ namespace Jolly
 			{
 				return false;
 			}
-			return !self.FlagValues[index];
+			return self.FlagValues[index];
 		}
 
 		public static void SetFlag(string flag, bool value)
