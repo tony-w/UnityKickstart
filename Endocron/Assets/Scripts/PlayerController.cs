@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
 	public int PlayerNumber;
 	
-	public float HorizontalMovementAxis
+	public float Movement
 	{
 		get
 		{
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public float VericalMovementAxis
+	public float Rotation
 	{
 		get
 		{
