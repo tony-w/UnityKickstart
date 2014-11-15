@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementForce: 100
-  RotationSpeed: 2
+  RotationSpeed: 20
   MaxSpeed: 15
   JumpForce: 1200
   GroundContactDelta: {fileID: 1976135541}
@@ -567,7 +567,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: RotationSpeed
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementForce: 100
-  RotationSpeed: 2
+  RotationSpeed: 20
   MaxSpeed: 15
   JumpForce: 1200
   GroundContactDelta: {fileID: 84667323}
@@ -1178,7 +1178,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: RotationSpeed
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
