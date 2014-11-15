@@ -136,7 +136,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &54484097
 MonoBehaviour:
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementForce: 100
+  RotationSpeed: 20
   MaxSpeed: 15
   JumpForce: 1200
   GroundContactDelta: {fileID: 1976135541}
@@ -341,7 +342,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 1000
-  field of view: 20
+  field of view: 50
   orthographic: 0
   orthographic size: 20
   m_Depth: 0
@@ -552,6 +553,22 @@ Prefab:
       propertyPath: m_AngularDrag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: MovementForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: MaxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: RotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
   m_RootGameObject: {fileID: 755907651}
@@ -668,7 +685,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &755907654
 MonoBehaviour:
@@ -683,6 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementForce: 100
+  RotationSpeed: 20
   MaxSpeed: 15
   JumpForce: 1200
   GroundContactDelta: {fileID: 84667323}
@@ -848,7 +866,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 1000
-  field of view: 20
+  field of view: 50
   orthographic: 0
   orthographic size: 20
   m_Depth: 0
@@ -1149,6 +1167,18 @@ Prefab:
     - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: m_AngularDrag
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: MovementForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: RotationSpeed
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
