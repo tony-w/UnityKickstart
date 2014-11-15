@@ -6,7 +6,7 @@ public class FollowPlayers : MonoBehaviour
 {
 	public GameObject Player;
 
-	private const float OffsetFactor = 1.0f;
+	public const float OffsetFactor = 1.0f;
 
 	private Vector3 CameraOffset;
 	private Vector3 TargetCameraPosition;
@@ -28,8 +28,8 @@ public class FollowPlayers : MonoBehaviour
 
 	void Update ()
 	{
-		this.CameraOffset.x = Mathf.Cos (Player.transform.rotation.y * Mathf.PI / 180.0f) * OffsetFactor;
-		this.CameraOffset.z = Mathf.Sin (Player.transform.rotation.z * Mathf.PI / 180.0f) * OffsetFactor;
+		this.CameraOffset.x = Mathf.Sin (Player.transform.rotation.y * Mathf.PI / 180.0f) * OffsetFactor;
+		this.CameraOffset.z = Mathf.Cos (Player.transform.rotation.z * Mathf.PI / 180.0f) * OffsetFactor;
 		this.TargetCameraPosition = (Player.transform.position + this.CameraOffset);
 		this.TargetCameraRotation.y = Player.transform.rotation.y;
 	}
