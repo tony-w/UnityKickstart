@@ -42,29 +42,14 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		float h = this.PlayerController.HorizontalMovementAxis;
-		float v = this.PlayerController.VericalMovementAxis;
+		float move = this.PlayerController.Movement;
+		float rot = this.PlayerController.Rotation;
 
-		this.rigidbody.AddForce (new Vector3(h * this.MovementForce, 0.0f, v * this.MovementForce));
+		this.rigidbody.AddForce (new Vector3(move * this.MovementForce * Mathf.Cos (rot * Mathf.PI / 180.0f),
+		                                     0.0f,
+		                                     move * this.MovementForce * Mathf.Sin (rot * Mathf.PI / 180.0f)));
 
-		float maxSpeedX = Mathf.Abs (this.MaxSpeed * h);
-		if (Mathf.Abs(this.rigidbody.velocity.x) > maxSpeedX)
-		{
-			this.rigidbody.velocity = new Vector3(Mathf.Sign (this.rigidbody.velocity.x) * maxSpeedX, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
-		}
-
-		float maxSpeedZ = Mathf.Abs (this.MaxSpeed * v);
-		if (Mathf.Abs(this.rigidbody.velocity.z) > maxSpeedZ)
-		{
-			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, this.rigidbody.velocity.y, Mathf.Sign (this.rigidbody.velocity.z) * maxSpeedZ);
-    	}
-
-		bool jump = this.PlayerController.Jump;
-		if (jump && this.IsOnGround)
-		{
-			this.rigidbody.AddForce(new Vector3(0.0f, this.JumpForce, 0.0f));
-			this.IsOnGround = false;
-		}
+				
 	}
 
 	public void OnCollected(Collectable collectable)

@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
 	public int PlayerNumber;
 	
-	public float HorizontalMovementAxis
+	public float Movement
 	{
 		get
 		{
@@ -13,19 +13,11 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public float VericalMovementAxis
+	public float Rotation
 	{
 		get
 		{
 			return Input.GetAxis (string.Format ("Vertical[{0}]", this.PlayerNumber));
-		}
-	}
-	
-	public bool Jump
-	{
-		get
-		{
-			return Input.GetButtonDown(string.Format ("Jump[{0}]", this.PlayerNumber));
 		}
 	}
 }
