@@ -5,13 +5,13 @@ InputManager:
   m_ObjectHideFlags: 0
   m_Axes:
   - serializedVersion: 3
-    m_Name: Forward[0]
+    m_Name: Horizontal[0]
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: w
+    negativeButton: a
+    positiveButton: d
     altNegativeButton: 
-    altPositiveButton: ','
+    altPositiveButton: 
     gravity: .5
     dead: .00100000005
     sensitivity: 3
@@ -21,11 +21,11 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Forward[1]
+    m_Name: Vertical[0]
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: up
+    negativeButton: s
+    positiveButton: w
     altNegativeButton: 
     altPositiveButton: 
     gravity: .5
