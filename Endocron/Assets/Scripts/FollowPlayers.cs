@@ -6,7 +6,7 @@ public class FollowPlayers : MonoBehaviour
 {
 	public GameObject Player;
 
-	private const float OffsetFactor = 2.0f;
+	private const float OffsetFactor = 1.0f;
 
 	private Vector3 CameraOffset;
 	private Vector3 TargetCameraPosition;

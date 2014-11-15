@@ -20,12 +20,4 @@ public class PlayerController : MonoBehaviour
 			return Input.GetAxis (string.Format ("Vertical[{0}]", this.PlayerNumber));
 		}
 	}
-	
-	public bool Jump
-	{
-		get
-		{
-			return false;
-		}
-	}
 }

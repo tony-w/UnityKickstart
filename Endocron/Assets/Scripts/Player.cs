@@ -58,13 +58,6 @@ public class Player : MonoBehaviour
 		{
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, this.rigidbody.velocity.y, Mathf.Sign (this.rigidbody.velocity.z) * maxSpeedZ);
     	}
-
-		bool jump = this.PlayerController.Jump;
-		if (jump && this.IsOnGround)
-		{
-			this.rigidbody.AddForce(new Vector3(0.0f, this.JumpForce, 0.0f));
-			this.IsOnGround = false;
-		}
 	}
 
 	public void OnCollected(Collectable collectable)
