@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 	{
 		get
 		{
-			return Input.GetAxis (string.Format ("Horizontal[{0}]", this.PlayerNumber));
+			return Input.GetAxis (string.Format ("Movement[{0}]", this.PlayerNumber));
 		}
 	}
 
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 	{
 		get
 		{
-			return Input.GetAxis (string.Format ("Vertical[{0}]", this.PlayerNumber));
+			return Input.GetAxis (string.Format ("Rotation[{0}]", this.PlayerNumber));
 		}
 	}
 }
