@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 	{
 		get
 		{
-			return Input.GetButtonDown(string.Format ("Jump[{0}]", this.PlayerNumber));
+			return false;
 		}
 	}
 }

@@ -1,0 +1,47 @@
+Initialize engine version: 4.5.4f1 (e036f44c54c9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 640M LE (ID=0xfd3)
+    Vendor:   NVIDIA
+    VRAM:     971 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.146 seconds
+desktop: 1366x768 59Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\System.Core.dll (this message is harmless)
+Terrain splat 1 is null.
+ 
+(Filename:  Line: 140)
+
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
+WARNING: Shader Unsupported: 'Hidden/Nature/Tree Creator Leaves Optimized' - Pass '' shader state not supported
+The tree pine4m must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+ 
+(Filename:  Line: 80)
+
+The tree pine4m must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+ 
+(Filename:  Line: 80)
+
+The tree pine4m must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+ 
+(Filename:  Line: 80)
+
+The tree pine4mLOD1 must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+ 
+(Filename:  Line: 80)
+
+The tree pine4mLOD1 must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+ 
+(Filename:  Line: 80)
+
+The tree pine4mLOD1 must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+ 
+(Filename:  Line: 80)
+
