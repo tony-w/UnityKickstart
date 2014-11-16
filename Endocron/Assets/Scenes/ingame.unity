@@ -256,11 +256,11 @@ GameObject:
   - 4: {fileID: 54484094}
   - 114: {fileID: 54484097}
   - 54: {fileID: 54484096}
-  - 135: {fileID: 54484095}
   - 114: {fileID: 54484098}
   - 82: {fileID: 54484100}
   - 114: {fileID: 54484099}
   - 95: {fileID: 54484101}
+  - 65: {fileID: 54484095}
   m_Layer: 0
   m_Name: Red Player
   m_TagString: Untagged
@@ -281,20 +281,19 @@ Transform:
   - {fileID: 1976135542}
   - {fileID: 2136168704}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
---- !u!135 &54484095
-SphereCollider:
+  m_RootOrder: 4
+--- !u!65 &54484095
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500000, guid: 721cbc6ac4c664110b2ca716789541c6,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 54484093}
-  m_Material: {fileID: 13400000, guid: ab6975629a0a74c84982ccd24565d616, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: .5, z: 0}
 --- !u!54 &54484096
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -326,12 +325,11 @@ MonoBehaviour:
   MovementForce: 100
   RotationSpeed: 30
   MaxSpeed: 15
-  JumpForce: 1200
+  InventorySize: 4
   SpawnRadius: 1
   SpawnArea: 1
   GroundContactDelta: {fileID: 1976135541}
   HUDColor: {r: 1, g: 0, b: 0, a: 1}
-  Inventory: []
 --- !u!114 &54484098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +429,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: ed3950b400d04884ea86e504b3c5f873, type: 3}
   m_Controller: {fileID: 9100000, guid: 6c03c4a6f3f3f11428083092a47cbd91, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -3628,12 +3626,12 @@ GameObject:
   - 4: {fileID: 755907655}
   - 114: {fileID: 755907654}
   - 54: {fileID: 755907653}
-  - 135: {fileID: 755907652}
   - 114: {fileID: 755907656}
   - 82: {fileID: 755907658}
   - 114: {fileID: 755907657}
   - 65: {fileID: 755907659}
   - 95: {fileID: 755907660}
+  - 65: {fileID: 755907652}
   m_Layer: 0
   m_Name: Blue Player
   m_TagString: Untagged
@@ -3641,19 +3639,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &755907652
-SphereCollider:
+--- !u!65 &755907652
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500000, guid: 721cbc6ac4c664110b2ca716789541c6,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 755907651}
-  m_Material: {fileID: 13400000, guid: ab6975629a0a74c84982ccd24565d616, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: .5, z: 0}
 --- !u!54 &755907653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3685,12 +3682,11 @@ MonoBehaviour:
   MovementForce: 100
   RotationSpeed: 30
   MaxSpeed: 15
-  JumpForce: 1200
+  InventorySize: 4
   SpawnRadius: 1
   SpawnArea: 1
   GroundContactDelta: {fileID: 84667323}
   HUDColor: {r: 0, g: 0, b: 1, a: 1}
-  Inventory: []
 --- !u!4 &755907655
 Transform:
   m_ObjectHideFlags: 0
@@ -7362,8 +7358,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreBackground: {fileID: 2800000, guid: 03134cf5d933f4e26af6033b77587f19, type: 3}
-  BottomLeftCornerPlayer: {fileID: 755907651}
-  BottomRightCornerPlayer: {fileID: 54484093}
+  BluePlayer: {fileID: 755907651}
+  RedPlayer: {fileID: 54484093}
+  WinDistance: 0
 --- !u!4 &1512799657
 Transform:
   m_ObjectHideFlags: 0
@@ -7375,7 +7372,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1519334271
 GameObject:
   m_ObjectHideFlags: 0

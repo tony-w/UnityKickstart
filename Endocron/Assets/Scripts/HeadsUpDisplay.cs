@@ -11,7 +11,7 @@ public class HeadsUpDisplay : MonoBehaviour
 	private bool HasWon = false;
 
 	void OnGUI ()
-	{
+	{/*
 		const float height = 97.0f;
 		const float width = 175.0f;
 		this.DrawScore(TextAnchor.UpperLeft, this.BluePlayer.GetComponent<Player>(), new Vector2(10.0f, Screen.height - height - 10.0f), width, height);
@@ -23,7 +23,7 @@ public class HeadsUpDisplay : MonoBehaviour
 		if (GUI.Button (new Rect((Screen.width - restartButtonWidth)/2, Screen.height - restartButtonHeight - 10.0f, restartButtonWidth, restartButtonHeight), "Restart Game"))
 		{
 			Application.LoadLevel("ingame");
-		}
+		}*/
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class HeadsUpDisplay : MonoBehaviour
 	{
 		HasWon = Vector3.Distance (this.BluePlayer.GetComponent<Player> ().transform.position, this.RedPlayer.GetComponent<Player> ().transform.position) < WinDistance;
 	}
-
+	/*
 	void DrawScore(TextAnchor alignment, Player player, Vector2 topLeft, float width, float height)
 	{
 		GUI.DrawTexture(new Rect(topLeft.x, topLeft.y, width, height), this.ScoreBackground);
@@ -53,6 +53,5 @@ public class HeadsUpDisplay : MonoBehaviour
 		nameStyle.alignment = alignment;
 		nameStyle.normal.textColor = player.HUDColor;
 		GUI.Label (new Rect(topLeft.x + outerMargin, topLeft.y + topMargin + scoreHeight, width - outerMargin * 2, height), player.name, nameStyle);
-
-	}
+	}*/
 }
