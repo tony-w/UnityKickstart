@@ -132,7 +132,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 1
+  m_AngularDrag: 100000
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementForce: 100
-  RotationSpeed: 20
+  RotationSpeed: 30
   MaxSpeed: 15
   JumpForce: 1200
   GroundContactDelta: {fileID: 1976135541}
@@ -342,7 +342,7 @@ Camera:
     width: .5
     height: 1
   near clip plane: .300000012
-  far clip plane: 1000
+  far clip plane: 200
   field of view: 50
   orthographic: 0
   orthographic size: 20
@@ -553,7 +553,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: m_AngularDrag
-      value: 1
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: m_Constraints
@@ -569,7 +569,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: RotationSpeed
-      value: 20
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: m_Drag
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
@@ -585,8 +589,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 359046420}
   - 108: {fileID: 359046419}
+  - 114: {fileID: 359046421}
   m_Layer: 0
-  m_Name: Point light
+  m_Name: RedSpotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,10 +606,10 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: .75
-  m_Range: 500
-  m_SpotAngle: 94.3000031
+  m_Range: 200
+  m_SpotAngle: 55
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -638,7 +643,19 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
+--- !u!114 &359046421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359046418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ea77646beab474294fce53a974288f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 54484093}
 --- !u!1 &755907651
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +700,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 1
+  m_AngularDrag: 100000
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -702,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementForce: 100
-  RotationSpeed: 20
+  RotationSpeed: 30
   MaxSpeed: 15
   JumpForce: 1200
   GroundContactDelta: {fileID: 84667323}
@@ -868,7 +885,7 @@ Camera:
     width: .5
     height: 1
   near clip plane: .300000012
-  far clip plane: 1000
+  far clip plane: 200
   field of view: 50
   orthographic: 0
   orthographic size: 20
@@ -1129,7 +1146,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: m_Name
@@ -1169,7 +1186,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: m_AngularDrag
-      value: 1
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: m_Constraints
@@ -1181,10 +1198,90 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
       propertyPath: RotationSpeed
-      value: 20
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: m_Drag
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
   m_RootGameObject: {fileID: 54484093}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &2121053049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2121053052}
+  - 108: {fileID: 2121053051}
+  - 114: {fileID: 2121053050}
+  m_Layer: 0
+  m_Name: BlueSpotlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2121053050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2121053049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ea77646beab474294fce53a974288f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 755907651}
+--- !u!108 &2121053051
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2121053049}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Type: 0
+  m_Color: {r: 0, g: .00689649582, b: 1, a: 1}
+  m_Intensity: .75
+  m_Range: 200
+  m_SpotAngle: 55
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_Softness: 4
+    m_SoftnessFade: 1
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 1
+  m_ActuallyLightmapped: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_ShadowSamples: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_IndirectIntensity: 1
+  m_AreaSize: {x: 1, y: 1}
+--- !u!4 &2121053052
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2121053049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.4268436, y: 2.89209938, z: 15}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7

@@ -26,10 +26,9 @@ public class Collectable : MonoBehaviour
 			return;
 		}
 
-		player.OnCollected(this);
-
-		AudioSource.PlayClipAtPoint(this.CollectedSound, this.transform.position);
-
-		DestroyObject (this.gameObject);
+		if (player.OnCollected (this)) {
+			AudioSource.PlayClipAtPoint (this.CollectedSound, this.transform.position);
+			DestroyObject (this.gameObject);
+		}
 	}
 }
