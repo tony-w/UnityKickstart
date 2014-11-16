@@ -65,4 +65,11 @@ public class Player : MonoBehaviour
 		}
 		return false;
 	}
+
+	private void PrintInventory() {
+		Debug.Log("Inventory items:");
+		for (int i = 0; i < NumItemsHeld; i++) {
+			Debug.Log(Inventory[i].Name);
+		}
+	}
 }
