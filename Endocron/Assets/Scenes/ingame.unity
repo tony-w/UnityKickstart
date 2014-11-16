@@ -1079,8 +1079,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectablesToPlace:
   - {fileID: 100082, guid: 5f0a0d048d627f54aa751cf932970243, type: 2}
-  - {fileID: 100000, guid: b98f2e6872ee24297934d6ca3bba37cd, type: 2}
-  SpawnCounts: 6400000002000000
+  - {fileID: 100000, guid: 83cb84560bcf2ad40a4c71bd9ef1c390, type: 2}
+  SpawnCounts: 3200000002000000
   ParentGameObject: {fileID: 176382631}
   SpawnRadius: 1000
   HeightAboveGround: 2
@@ -4611,7 +4611,6 @@ GameObject:
   - 4: {fileID: 1427987483}
   - 198: {fileID: 1427987482}
   - 199: {fileID: 1427987481}
-  - 114: {fileID: 1427987480}
   m_Layer: 0
   m_Name: Blue Snow
   m_TagString: Untagged
@@ -4619,18 +4618,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1427987480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1427987479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5242f2ffa10a744ac91294cdbdee73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 755907651}
 --- !u!199 &1427987481
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
