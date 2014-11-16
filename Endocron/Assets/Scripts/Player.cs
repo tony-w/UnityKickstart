@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Jolly;
 
@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
 	private int NumItemsHeld;
 
 	private Animator animator;
-
 	public Player ()
 	{
 		this.Inventory = new Collectable[InventorySize];
