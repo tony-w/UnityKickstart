@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using Jolly;
 
 public class Player : MonoBehaviour
@@ -8,29 +7,24 @@ public class Player : MonoBehaviour
 	public float MovementForce;
 	public float RotationSpeed;
 	public float MaxSpeed;
-	public float JumpForce;
+	public int InventorySize = 4;
 
 	public float SpawnRadius;
 	public float SpawnArea;
 
 	public GameObject GroundContactDelta;
-
 	private PlayerController PlayerController;
-
 	public bool IsOnGround { get; private set; }
-
 	public Color HUDColor;
-
-	public int Score { get; private set; }
-
-	public List<Collectable> Inventory;
+	private Collectable[] Inventory;
+	private int NumItemsHeld;
 
 	private Animator animator;
 
 	public Player ()
 	{
-		this.Score = 0;
-		this.Inventory = new List<Collectable>();
+		this.Inventory = new Collectable[InventorySize];
+		NumItemsHeld = 0;
 	}
 
 	void Start ()
@@ -81,9 +75,22 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	public void OnCollected(Collectable collectable)
+	/**
+	 * Return true if there was room in the player's inventory for the object.
+	 */
+	public bool OnCollected(Collectable collectable)
 	{
-		this.Score++;
-		Inventory.Add (collectable);
+		if (this.NumItemsHeld < this.Inventory.Length) {
+			this.Inventory[this.NumItemsHeld++] = collectable;
+			return true;
+		}
+		return false;
+	}
+
+	private void PrintInventory() {
+		Debug.Log("Inventory items:");
+		for (int i = 0; i < NumItemsHeld; i++) {
+			Debug.Log(Inventory[i].Name);
+		}
 	}
 }
