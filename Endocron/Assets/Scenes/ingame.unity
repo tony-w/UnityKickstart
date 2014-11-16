@@ -3996,10 +3996,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 54484094}
   m_RootOrder: 1
-<<<<<<< Updated upstream
-<<<<<<< HEAD
->>>>>>> 7faa7d13b3ba155197893b791693a35204728e9f
-=======
 --- !u!1 &2001550874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4085,9 +4081,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1114987946}
   m_RootOrder: 0
->>>>>>> 054f7e03bcce430d2bcec0e47af922b7e6684cc3
-=======
->>>>>>> Stashed changes
 --- !u!1001 &2119681979
 Prefab:
   m_ObjectHideFlags: 0

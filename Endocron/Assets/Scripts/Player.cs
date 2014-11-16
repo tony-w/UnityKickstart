@@ -16,13 +16,11 @@ public class Player : MonoBehaviour
 	private PlayerController PlayerController;
 	public bool IsOnGround { get; private set; }
 	public Color HUDColor;
-	public int Score { get; private set; }
 	private Collectable[] Inventory;
 	private int NumItemsHeld;
 
 	public Player ()
 	{
-		this.Score = 0;
 		this.Inventory = new Collectable[InventorySize];
 		NumItemsHeld = 0;
 	}
@@ -72,7 +70,6 @@ public class Player : MonoBehaviour
 	public bool OnCollected(Collectable collectable)
 	{
 		if (this.NumItemsHeld < this.Inventory.Length) {
-			this.Score++;
 			this.Inventory[this.NumItemsHeld++] = collectable;
 			return true;
 		}
