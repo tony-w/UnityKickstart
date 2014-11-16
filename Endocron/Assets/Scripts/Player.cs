@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
 	public float MaxSpeed;
 	public int InventorySize = 4;
 
+	public float SpawnRadius;
+	public float SpawnArea;
+
 	public GameObject GroundContactDelta;
 	private PlayerController PlayerController;
 	public bool IsOnGround { get; private set; }
@@ -26,6 +29,13 @@ public class Player : MonoBehaviour
 
 	void Start ()
 	{
+		Vector2 location = Random.insideUnitCircle * this.SpawnRadius;
+		while (location.y * SpawnArea < 0)
+			location = Random.insideUnitCircle * this.SpawnRadius;
+		Vector3 worldPosition = new Vector3 (location.x, 5, location.y);
+
+		this.transform.position = worldPosition;
+
 		this.PlayerController = this.GetComponent<PlayerController>();
 
 		JollyDebug.Watch (this, "IsOnGround", delegate ()
@@ -48,9 +58,12 @@ public class Player : MonoBehaviour
 
 		translate *= Time.deltaTime;
 		rotation *= Time.deltaTime;
-		transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed, 0,
-		                     translate * Mathf.Cos (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed);
-		transform.Rotate (0, rotation * RotationSpeed, 0);
+		if (translate != 0.0f)
+			transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed,
+		                     	0,
+		                     	translate * Mathf.Cos (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed);
+		if (rotation != 0.0f)
+			transform.Rotate (0, rotation * RotationSpeed, 0);
 	}
 
 	/**
