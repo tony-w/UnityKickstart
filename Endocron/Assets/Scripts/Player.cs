@@ -19,20 +19,16 @@ public class Player : MonoBehaviour
 	private PlayerController PlayerController;
 	public bool IsOnGround { get; private set; }
 	public Color HUDColor;
-	private Collectable[] Inventory;
-	private int NumItemsHeld;
-
+	private string[] Inventory;
 	private Animator animator;
-	public Player ()
-	{
-		this.Inventory = new Collectable[InventorySize];
-		NumItemsHeld = 0;
-	}
 
 	void Start ()
 	{
 		freezePosition = this.transform.position;
 		freezeRotation = this.transform.rotation;
+		this.Inventory = new string[InventorySize];
+		for (int i = 0; i < InventorySize; i++) this.Inventory [i] = null;
+
 		Vector2 location = Random.insideUnitCircle * this.SpawnRadius;
 		while (location.y * SpawnArea < 0)
 			location = Random.insideUnitCircle * this.SpawnRadius;
@@ -91,19 +87,41 @@ public class Player : MonoBehaviour
 	/**
 	 * Return true if there was room in the player's inventory for the object.
 	 */
-	public bool OnCollected(Collectable collectable)
+	public bool OnCollected(string item)
 	{
-		if (this.NumItemsHeld < this.Inventory.Length) {
-			this.Inventory[this.NumItemsHeld++] = collectable;
-			return true;
+		return AddItemToInventory (item);
+	}
+
+	public bool IsHoldingItem(string itemName) {
+		for (int i = 0; i < this.Inventory.Length; i++) {
+			if (null != this.Inventory [i] && this.Inventory [i].Equals(itemName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Return true if there was room in the player's inventory for the object.
+	 */
+	private bool AddItemToInventory(string item) {
+		for (int i = 0; i < this.Inventory.Length; i++) {
+			if (null == this.Inventory [i]) {
+				this.Inventory [i] = item;
+				if (item.Equals("Boots")) {
+					this.MaxSpeed = 30;
+					this.RotationSpeed = 60;
+				}
+				return true;
+			}
 		}
 		return false;
 	}
 
 	private void PrintInventory() {
 		Debug.Log("Inventory items:");
-		for (int i = 0; i < NumItemsHeld; i++) {
-			Debug.Log(Inventory[i].Name);
+		for (int i = 0; i < this.Inventory.Length; i++) {
+			Debug.Log(null == this.Inventory [i] ? "<Empty>" : Inventory[i]);
 		}
 	}
 }

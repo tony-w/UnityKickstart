@@ -26,7 +26,7 @@ public class Collectable : MonoBehaviour
 			return;
 		}
 
-		if (player.OnCollected (this)) {
+		if (player.OnCollected (this.Name)) {
 			AudioSource.PlayClipAtPoint (this.CollectedSound, this.transform.position);
 			DestroyObject (this.gameObject);
 		}
