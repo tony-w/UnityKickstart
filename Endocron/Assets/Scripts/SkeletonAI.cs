@@ -9,10 +9,16 @@ public class SkeletonAI : MonoBehaviour {
 	public GameObject RedPlayer;
 	public GameObject BluePlayer;
 
+	private GameObject CurrentPlayerToAttack;
+
+	private float TimeSinceAttacking = 0.0f;
+
 	
 	// Use this for initialization
 	void Start () {
-		
+		this.RedPlayer = GameObject.Find("Red Player");
+		this.BluePlayer = GameObject.Find("Blue Player");
+		CurrentPlayerToAttack = null;
 	}
 	
 	// Update is called once per frame
@@ -31,6 +37,8 @@ public class SkeletonAI : MonoBehaviour {
 		float distToBluePlayer = vecToBluePlayer.magnitude;
 
 		if (distToRedPlayer <= this.DistToChase && distToRedPlayer < distToBluePlayer) {
+			CurrentPlayerToAttack = this.RedPlayer;
+
 			this.transform.LookAt(redPlayerPosition);
 			if (distToRedPlayer > DistToAttack) {
 				// Chase the red player down!
@@ -39,8 +47,11 @@ public class SkeletonAI : MonoBehaviour {
 			} else {
 				// ATTACK!!
 				this.animation.Play("attack", PlayMode.StopAll);
+				TimeSinceAttacking += Time.deltaTime;
 			}
 		} else if (distToBluePlayer <= this.DistToChase){
+			CurrentPlayerToAttack = this.BluePlayer;
+
 			this.transform.LookAt(bluePlayerPosition);
 			if (distToBluePlayer > DistToAttack) {
 				// Chase the blue player down!
@@ -49,6 +60,7 @@ public class SkeletonAI : MonoBehaviour {
 			} else {
 				// ATTACK!!
 				this.animation.Play("attack", PlayMode.StopAll);
+				TimeSinceAttacking += Time.deltaTime;
 			}
 		} else {
 			// Neither player is very close; just wait around for one to show up.
@@ -59,6 +71,12 @@ public class SkeletonAI : MonoBehaviour {
 		{
 			// Slow this monster down!
 			this.rigidbody.velocity = this.rigidbody.velocity.normalized * MaxSpeed;
+		}
+
+		if (TimeSinceAttacking >= 1.0f) {
+			CurrentPlayerToAttack.GetComponent<Player>().Kill();
+			CurrentPlayerToAttack = null;
+			TimeSinceAttacking = 0.0f;
 		}
 	}
 }
