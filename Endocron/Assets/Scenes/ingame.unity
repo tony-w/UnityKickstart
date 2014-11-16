@@ -154,6 +154,8 @@ MonoBehaviour:
   RotationSpeed: 30
   MaxSpeed: 15
   JumpForce: 1200
+  SpawnRadius: 1000
+  SpawnArea: 1
   GroundContactDelta: {fileID: 1976135541}
   HUDColor: {r: 1, g: 0, b: 0, a: 1}
   Inventory: []
@@ -342,7 +344,7 @@ Camera:
     width: .5
     height: 1
   near clip plane: .300000012
-  far clip plane: 200
+  far clip plane: 100
   field of view: 50
   orthographic: 0
   orthographic size: 20
@@ -575,6 +577,18 @@ Prefab:
       propertyPath: m_Drag
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: SpawnRadius
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: SpawnZ
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: SpawnArea
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
   m_RootGameObject: {fileID: 755907651}
@@ -607,8 +621,8 @@ Light:
   serializedVersion: 3
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: .75
-  m_Range: 200
+  m_Intensity: .949999988
+  m_Range: 45
   m_SpotAngle: 55
   m_CookieSize: 10
   m_Shadows:
@@ -722,6 +736,8 @@ MonoBehaviour:
   RotationSpeed: 30
   MaxSpeed: 15
   JumpForce: 1200
+  SpawnRadius: 1000
+  SpawnArea: -1
   GroundContactDelta: {fileID: 84667323}
   HUDColor: {r: 0, g: 0, b: 1, a: 1}
   Inventory: []
@@ -885,7 +901,7 @@ Camera:
     width: .5
     height: 1
   near clip plane: .300000012
-  far clip plane: 200
+  far clip plane: 100
   field of view: 50
   orthographic: 0
   orthographic size: 20
@@ -1204,6 +1220,14 @@ Prefab:
       propertyPath: m_Drag
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: SpawnRadius
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
+      propertyPath: SpawnArea
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 721cbc6ac4c664110b2ca716789541c6, type: 2}
   m_RootGameObject: {fileID: 54484093}
@@ -1248,8 +1272,8 @@ Light:
   serializedVersion: 3
   m_Type: 0
   m_Color: {r: 0, g: .00689649582, b: 1, a: 1}
-  m_Intensity: .75
-  m_Range: 200
+  m_Intensity: .949999988
+  m_Range: 45
   m_SpotAngle: 55
   m_CookieSize: 10
   m_Shadows:
