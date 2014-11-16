@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using Jolly;
 
 public class Player : MonoBehaviour
@@ -8,24 +7,20 @@ public class Player : MonoBehaviour
 	public float MovementForce;
 	public float RotationSpeed;
 	public float MaxSpeed;
-	public float JumpForce;
+	public int InventorySize = 4;
+	public Collectable[] Inventory;
+	public int NumItemsHeld = 0;
 
 	public GameObject GroundContactDelta;
-
 	private PlayerController PlayerController;
-
 	public bool IsOnGround { get; private set; }
-
 	public Color HUDColor;
-
 	public int Score { get; private set; }
-
-	public List<Collectable> Inventory;
 
 	public Player ()
 	{
 		this.Score = 0;
-		this.Inventory = new List<Collectable>();
+		this.Inventory = new Collectable[InventorySize];
 	}
 
 	void Start ()
@@ -58,9 +53,16 @@ public class Player : MonoBehaviour
 		transform.Rotate (0, rotation * RotationSpeed, 0);
 	}
 
-	public void OnCollected(Collectable collectable)
+	/**
+	 * Return true if there was room in the player's inventory for the object.
+	 */
+	public bool OnCollected(Collectable collectable)
 	{
-		this.Score++;
-		Inventory.Add (collectable);
+		if (this.NumItemsHeld < this.InventorySize) {
+			this.Score++;
+			this.Inventory[NumItemsHeld++] = collectable;
+			return true;
+		}
+		return false;
 	}
 }
