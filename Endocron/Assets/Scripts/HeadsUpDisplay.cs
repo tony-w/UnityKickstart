@@ -35,7 +35,7 @@ public class HeadsUpDisplay : MonoBehaviour
 		scoreStyle.fontSize = 40;
 		scoreStyle.alignment = alignment;
 		scoreStyle.normal.textColor = player.HUDColor;
-		GUI.Label (new Rect(topLeft.x + outerMargin, topLeft.y + topMargin, width - outerMargin * 2, height), player.Score.ToString(), scoreStyle);
+		GUI.Label (new Rect(topLeft.x + outerMargin, topLeft.y + topMargin, width - outerMargin * 2, height), player.transform.position.ToString(), scoreStyle);
 
 		GUIStyle nameStyle = new GUIStyle("label");
 		nameStyle.fontSize = 14;

@@ -52,3 +52,9 @@ Icon?
 ehthumbs.db
 Thumbs.db
 pcbuild_Data/
+
+# ========================== #
+# Ignore the TestBuild stuff #
+# ========================== #
+*/TestBuild_Data/*
+*/TestBuild.exe/*
