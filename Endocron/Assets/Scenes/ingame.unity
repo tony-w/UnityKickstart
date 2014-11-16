@@ -156,6 +156,7 @@ MonoBehaviour:
   JumpForce: 1200
   GroundContactDelta: {fileID: 1976135541}
   HUDColor: {r: 1, g: 0, b: 0, a: 1}
+  Inventory: []
 --- !u!114 &54484098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,11 +474,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345ff14e79a6044c0aaeec9f66782bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectableToPlace: {fileID: 100000, guid: b98f2e6872ee24297934d6ca3bba37cd, type: 2}
+  CollectablesToPlace:
+  - {fileID: 100000, guid: b98f2e6872ee24297934d6ca3bba37cd, type: 2}
+  SpawnCounts: e8030000
   ParentGameObject: {fileID: 176382631}
   SpawnRadius: 1000
-  HeightAboveGround: 0
-  SpawnCount: 1000
+  HeightAboveGround: 2
 --- !u!1001 &239848080
 Prefab:
   m_ObjectHideFlags: 0
@@ -705,6 +707,7 @@ MonoBehaviour:
   JumpForce: 1200
   GroundContactDelta: {fileID: 84667323}
   HUDColor: {r: 0, g: 0, b: 1, a: 1}
+  Inventory: []
 --- !u!4 &755907655
 Transform:
   m_ObjectHideFlags: 0
