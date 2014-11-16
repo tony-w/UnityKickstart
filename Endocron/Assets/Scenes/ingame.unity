@@ -5702,7 +5702,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1427987479}
   m_LocalRotation: {x: -1, y: -4.37113883e-08, z: 4.37113883e-08, w: 1.91068547e-15}
-  m_LocalPosition: {x: 98.5825043, y: 17.8659992, z: 6.61699677}
+  m_LocalPosition: {x: 1032.55945, y: 17.8660812, z: 6.61691523}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5773,7 +5773,6 @@ GameObject:
   - 4: {fileID: 1483219194}
   - 198: {fileID: 1483219193}
   - 199: {fileID: 1483219192}
-  - 114: {fileID: 1483219195}
   m_Layer: 0
   m_Name: Red Snow
   m_TagString: Untagged
@@ -6852,23 +6851,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1483219191}
   m_LocalRotation: {x: -1, y: -4.37113883e-08, z: 4.37113883e-08, w: 1.91068547e-15}
-  m_LocalPosition: {x: 98.5825043, y: 17.8659992, z: 6.61699677}
+  m_LocalPosition: {x: 1016.07819, y: 17.8660793, z: 6.61691666}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
---- !u!114 &1483219195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1483219191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5242f2ffa10a744ac91294cdbdee73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 54484093}
 --- !u!1 &1502476355
 GameObject:
   m_ObjectHideFlags: 0
