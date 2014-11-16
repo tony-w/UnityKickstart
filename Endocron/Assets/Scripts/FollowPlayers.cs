@@ -32,6 +32,7 @@ public class FollowPlayers : MonoBehaviour
 	{
 		this.CameraOffset.x = Mathf.Sin (Player.transform.rotation.y * Mathf.PI / 180.0f) * OffsetFactor;
 		this.CameraOffset.z = Mathf.Cos (Player.transform.rotation.z * Mathf.PI / 180.0f) * OffsetFactor;
+		this.CameraOffset.y = Player.transform.localScale.y / 2;
 		this.TargetCameraPosition = (Player.transform.position + this.CameraOffset);
 	}
 }

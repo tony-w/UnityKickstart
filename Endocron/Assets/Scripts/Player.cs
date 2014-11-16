@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
 	public List<Collectable> Inventory;
 
+	private Animator animator;
+
 	public Player ()
 	{
 		this.Score = 0;
@@ -41,6 +43,8 @@ public class Player : MonoBehaviour
 		this.transform.position = worldPosition;
 
 		this.PlayerController = this.GetComponent<PlayerController>();
+
+		this.animator = gameObject.GetComponent<Animator> ();
 
 		JollyDebug.Watch (this, "IsOnGround", delegate ()
 		{
@@ -62,12 +66,19 @@ public class Player : MonoBehaviour
 
 		translate *= Time.deltaTime;
 		rotation *= Time.deltaTime;
-		if (translate != 0.0f)
+		if (translate != 0.0f) {
 			transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed,
 		                     	0,
 		                     	translate * Mathf.Cos (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed);
-		if (rotation != 0.0f)
+			animator.Play("walking");
+		}
+		if (rotation != 0.0f) {
 			transform.Rotate (0, rotation * RotationSpeed, 0);
+			animator.Play(rotation < 0 ? "left_turn" : "right_turn");
+		}
+		if (translate != 0.0f && rotation != 0.0f && animator != null) {
+			animator.Play("idle");
+		}
 	}
 
 	public void OnCollected(Collectable collectable)
