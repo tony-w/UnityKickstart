@@ -31,7 +31,8 @@ public class HeadsUpDisplay : MonoBehaviour
 	 */
 	void Update ()
 	{
-		HasWon = Vector3.Distance (this.BluePlayer.GetComponent<Player> ().transform.position, this.RedPlayer.GetComponent<Player> ().transform.position) < WinDistance;
+		HasWon = Vector3.Distance (this.BluePlayer.GetComponent<Player> ().transform.position, this.RedPlayer.GetComponent<Player> ().transform.position) < WinDistance
+			&& this.BluePlayer.GetComponent<Player> ().IsHoldingItem("Coin") && this.RedPlayer.GetComponent<Player> ().IsHoldingItem("Coin");
 	}
 	/*
 	void DrawScore(TextAnchor alignment, Player player, Vector2 topLeft, float width, float height)
