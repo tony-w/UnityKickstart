@@ -10,11 +10,6 @@ public class LightAheadOfPlayers : MonoBehaviour {
 		this.transform.position = Player.transform.position;
 		this.transform.rotation = Player.transform.rotation;
 	}
-
-	void OnPreCull () {
-		this.transform.position = Player.transform.position;
-		this.transform.rotation = Player.transform.rotation;
-	}
 	
 	// Update is called once per frame
 	void Update () {
