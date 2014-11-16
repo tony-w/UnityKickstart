@@ -106,10 +106,13 @@ public class Player : MonoBehaviour
 	 * Return true if there was room in the player's inventory for the object.
 	 */
 	private bool AddItemToInventory(string item) {
+		if (item.Equals ("Endocron") && this.IsHoldingItem ("Endocron")) {
+			return false;
+		}
 		for (int i = 0; i < this.Inventory.Length; i++) {
 			if (null == this.Inventory [i]) {
 				this.Inventory [i] = item;
-				if (item.Equals("Boots")) {
+				if (item.Equals("Hoverboard")) {
 					this.MaxSpeed = 30;
 					this.RotationSpeed = 60;
 				}
