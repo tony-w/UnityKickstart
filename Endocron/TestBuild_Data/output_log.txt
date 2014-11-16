@@ -1,20 +1,25 @@
-Initialize engine version: 4.5.4f1 (e036f44c54c9)
+Initialize engine version: 4.5.5f1 (7684ad0c5a44)
 GfxDevice: creating device client; threaded=1
 Direct3D:
+<<<<<<< HEAD
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GT 640M LE (ID=0xfd3)
-    Vendor:   NVIDIA
-    VRAM:     971 MB
+    Renderer: AMD Radeon 6600M and 6700M Series (ID=0x6741)
+    Vendor:   ATI
+    VRAM:     1012 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.146 seconds
-desktop: 1366x768 59Hz; virtual: 1366x768 at 0,0
+Platform assembly: C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.207 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Andy\workspace\Unity\UnityKickstart\Endocron\TestBuild_Data\Managed\System.Core.dll (this message is harmless)
 Terrain splat 1 is null.
  
 (Filename:  Line: 140)
@@ -45,3 +50,23 @@ The tree pine4mLOD1 must use the Nature/Soft Occlusion shader. Otherwise billboa
  
 (Filename:  Line: 80)
 
+=======
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.4460]
+    Renderer: NVIDIA GeForce GT 640M LE
+    Vendor:   NVIDIA
+    VRAM:     971 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Ryan Lorey\Documents\Workspace\JollyGameJam\UnityKickstart\Endocron\TestBuild_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.051 seconds
+desktop: 1366x768 59Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+>>>>>>> 1b7b707a9d7c8f489baed0be55b32a7347101b8c
