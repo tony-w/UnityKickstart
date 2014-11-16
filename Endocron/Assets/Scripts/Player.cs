@@ -8,19 +8,20 @@ public class Player : MonoBehaviour
 	public float RotationSpeed;
 	public float MaxSpeed;
 	public int InventorySize = 4;
-	public Collectable[] Inventory;
-	public int NumItemsHeld = 0;
 
 	public GameObject GroundContactDelta;
 	private PlayerController PlayerController;
 	public bool IsOnGround { get; private set; }
 	public Color HUDColor;
 	public int Score { get; private set; }
+	private Collectable[] Inventory;
+	private int NumItemsHeld;
 
 	public Player ()
 	{
 		this.Score = 0;
 		this.Inventory = new Collectable[InventorySize];
+		NumItemsHeld = 0;
 	}
 
 	void Start ()
@@ -47,8 +48,7 @@ public class Player : MonoBehaviour
 
 		translate *= Time.deltaTime;
 		rotation *= Time.deltaTime;
-		transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed,
-		                     0,
+		transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed, 0,
 		                     translate * Mathf.Cos (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed);
 		transform.Rotate (0, rotation * RotationSpeed, 0);
 	}
@@ -58,9 +58,9 @@ public class Player : MonoBehaviour
 	 */
 	public bool OnCollected(Collectable collectable)
 	{
-		if (this.NumItemsHeld < this.InventorySize) {
+		if (this.NumItemsHeld < this.Inventory.Length) {
 			this.Score++;
-			this.Inventory[NumItemsHeld++] = collectable;
+			this.Inventory[this.NumItemsHeld++] = collectable;
 			return true;
 		}
 		return false;
