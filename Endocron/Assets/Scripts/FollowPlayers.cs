@@ -6,33 +6,17 @@ public class FollowPlayers : MonoBehaviour
 {
 	public GameObject Player;
 
-	public const float OffsetFactor = 1.5f;
-
-	private Vector3 CameraOffset;
-	private Vector3 TargetCameraPosition;
-
 	void Start ()
 	{
-		this.CameraOffset = this.camera.transform.position;
-		this.CameraOffset.y = 0.0f;
-		this.TargetCameraPosition = Player.transform.position;
+		float height = Player.transform.localScale.y * 1.8f;
+		this.camera.transform.position = Player.transform.position + new Vector3(0.0f, height, 0.0f);
+		this.camera.transform.rotation = Player.transform.rotation;
 	}
 
 	void OnPreCull ()
 	{
-		this.camera.transform.position = this.TargetCameraPosition;
+		float height = Player.transform.localScale.y * 1.8f;
+		this.camera.transform.position = Player.transform.position + new Vector3(0.0f, height, 0.0f);
 		this.camera.transform.rotation = Player.transform.rotation;
-	}
-
-	void OnPreRender ()
-	{
-	}
-
-	void Update ()
-	{
-		this.CameraOffset.x = Mathf.Sin (Player.transform.rotation.y * Mathf.PI / 180.0f) * OffsetFactor;
-		this.CameraOffset.z = Mathf.Cos (Player.transform.rotation.z * Mathf.PI / 180.0f) * OffsetFactor;
-		this.CameraOffset.y = Player.transform.localScale.y / 2;
-		this.TargetCameraPosition = (Player.transform.position + this.CameraOffset);
 	}
 }

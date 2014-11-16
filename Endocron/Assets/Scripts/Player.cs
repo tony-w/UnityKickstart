@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
 	public float MaxSpeed;
 	public int InventorySize = 4;
 
+	private Vector3 freezePosition = Vector3.zero;
+	private Quaternion freezeRotation = Quaternion.identity;
+
 	public float SpawnRadius;
 	public float SpawnArea;
 
@@ -28,6 +31,8 @@ public class Player : MonoBehaviour
 
 	void Start ()
 	{
+		freezePosition = this.transform.position;
+		freezeRotation = this.transform.rotation;
 		Vector2 location = Random.insideUnitCircle * this.SpawnRadius;
 		while (location.y * SpawnArea < 0)
 			location = Random.insideUnitCircle * this.SpawnRadius;
@@ -59,17 +64,26 @@ public class Player : MonoBehaviour
 
 		translate *= Time.deltaTime;
 		rotation *= Time.deltaTime;
-		if (translate != 0.0f) {
+		if (PlayerController.PlayerNumber == 0 && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W))
+		    || PlayerController.PlayerNumber == 1 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))) {
 			transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed,
 		                     	0,
 		                     	translate * Mathf.Cos (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed);
+			freezePosition = this.transform.position;
 			animator.Play("walking");
+		} else {
+			this.transform.position = freezePosition;
 		}
-		if (rotation != 0.0f) {
+		if (PlayerController.PlayerNumber == 0 && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)
+		    || PlayerController.PlayerNumber == 1 && Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
 			transform.Rotate (0, rotation * RotationSpeed, 0);
+			freezeRotation = this.transform.rotation;
 			animator.Play(rotation < 0 ? "left_turn" : "right_turn");
+		} else {
+			this.transform.rotation = freezeRotation;
 		}
-		if (translate != 0.0f && rotation != 0.0f && animator != null) {
+
+		if (translate == 0.0f && rotation == 0.0f) {
 			animator.Play("idle");
 		}
 	}

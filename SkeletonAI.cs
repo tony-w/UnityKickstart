@@ -30,7 +30,7 @@ public class SkeletonAI : MonoBehaviour {
 		Vector3 vecToBluePlayer = bluePlayerPosition - thisPosition;
 		float distToBluePlayer = vecToBluePlayer.magnitude;
 
-		if (distToRedPlayer <= this.DistToChase && distToRedPlayer < distToBluePlayer) {
+		if (distToRedPlayer <= this.DistToChase) {
 			this.transform.LookAt(redPlayerPosition);
 			if (distToRedPlayer > DistToAttack) {
 				// Chase the red player down!
@@ -60,5 +60,6 @@ public class SkeletonAI : MonoBehaviour {
 			// Slow this monster down!
 			this.rigidbody.velocity = this.rigidbody.velocity.normalized * MaxSpeed;
 		}
+		this.RedPlayer.GetComponent<Player> ().Score = (int) distToRedPlayer;
 	}
 }
