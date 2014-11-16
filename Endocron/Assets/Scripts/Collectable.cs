@@ -5,6 +5,7 @@ public class Collectable : MonoBehaviour
 {
 	public float RotationSpeed;
 	public AudioClip CollectedSound;
+	public string Name;
 
 	void Start ()
 	{

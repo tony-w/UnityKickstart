@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationSpeed: 30
   CollectedSound: {fileID: 8300000, guid: 3fd7b447dd4f84cf5a1987a1710ea340, type: 3}
+  Name: Coin
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

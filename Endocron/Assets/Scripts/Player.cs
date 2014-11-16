@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Jolly;
 
 public class Player : MonoBehaviour
@@ -19,9 +20,12 @@ public class Player : MonoBehaviour
 
 	public int Score { get; private set; }
 
+	public List<Collectable> Inventory;
+
 	public Player ()
 	{
 		this.Score = 0;
+		this.Inventory = new List<Collectable>();
 	}
 
 	void Start ()
@@ -57,5 +61,6 @@ public class Player : MonoBehaviour
 	public void OnCollected(Collectable collectable)
 	{
 		this.Score++;
+		Inventory.Add (collectable);
 	}
 }
