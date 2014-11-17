@@ -10,9 +10,6 @@ public class Player : MonoBehaviour
 	public float HoverboardRotationSpeed, HoverboardMaxSpeed;
 	public int InventorySize = 4;
 
-	private Vector3 freezePosition = Vector3.zero;
-	private Quaternion freezeRotation = Quaternion.identity;
-
 	public float SpawnRadius;
 	public float SpawnArea;
 
@@ -25,8 +22,6 @@ public class Player : MonoBehaviour
 
 	void Start ()
 	{
-		freezePosition = this.transform.position;
-		freezeRotation = this.transform.rotation;
 		this.Inventory = new string[InventorySize];
 		for (int i = 0; i < InventorySize; i++) this.Inventory [i] = null;
 
@@ -61,23 +56,15 @@ public class Player : MonoBehaviour
 
 		translate *= Time.deltaTime;
 		rotation *= Time.deltaTime;
-		if (PlayerController.PlayerNumber == 0 && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W))
-		    || PlayerController.PlayerNumber == 1 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))) {
+		if (translate != 0.0f) {
 			transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed,
 		                     	0,
 		                     	translate * Mathf.Cos (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed);
-			freezePosition = this.transform.position;
 			animator.Play("walking");
-		} else {
-			this.transform.position = freezePosition;
 		}
-		if (PlayerController.PlayerNumber == 0 && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)
-		    || PlayerController.PlayerNumber == 1 && Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
+		if (rotation != 0.0f) {
 			transform.Rotate (0, rotation * RotationSpeed, 0);
-			freezeRotation = this.transform.rotation;
-			animator.Play(rotation < 0 ? "left_turn" : "right_turn");
-		} else {
-			this.transform.rotation = freezeRotation;
+			if (translate == 0.0f) animator.Play(rotation < 0 ? "left_turn" : "right_turn");
 		}
 
 		if (translate == 0.0f && rotation == 0.0f) {
