@@ -203,8 +203,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementForce: 100
-  RotationSpeed: 0
-  MaxSpeed: 15
+  RotationSpeed: 50
+  MaxSpeed: 30
+  HoverboardRotationSpeed: 75
+  HoverboardMaxSpeed: 45
   InventorySize: 4
   SpawnRadius: 0
   SpawnArea: 0

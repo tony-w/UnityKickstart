@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 	public float MovementForce;
 	public float RotationSpeed;
 	public float MaxSpeed;
+	public float HoverboardRotationSpeed, HoverboardMaxSpeed;
 	public int InventorySize = 4;
 
 	private Vector3 freezePosition = Vector3.zero;
@@ -91,30 +92,31 @@ public class Player : MonoBehaviour
 	{
 		return AddItemToInventory (item);
 	}
-
-	public bool IsHoldingItem(string itemName) {;
-		for (int i = 0; i < this.Inventory.Length; i++) {
-			if (null != this.Inventory [i] && this.Inventory [i].Equals(itemName)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
+	
 	/**
 	 * Return true if there was room in the player's inventory for the object.
 	 */
 	private bool AddItemToInventory(string item) {
-		if (item.Equals ("Endocron") && this.IsHoldingItem ("Endocron")) {
+		// For now, no objects can be duplicated. Maybe use a Set in the future.
+		if (this.IsHoldingItem ("item")) {
 			return false;
 		}
 		for (int i = 0; i < this.Inventory.Length; i++) {
 			if (null == this.Inventory [i]) {
 				this.Inventory [i] = item;
 				if (item.Equals("Hoverboard")) {
-					this.MaxSpeed = 60;
-					this.RotationSpeed = 100;
+					this.MaxSpeed = this.HoverboardMaxSpeed;
+					this.RotationSpeed = this.HoverboardRotationSpeed;
 				}
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public bool IsHoldingItem(string itemName) {;
+		for (int i = 0; i < this.Inventory.Length; i++) {
+			if (null != this.Inventory [i] && this.Inventory [i].Equals(itemName)) {
 				return true;
 			}
 		}

@@ -298,6 +298,8 @@ MonoBehaviour:
   MovementForce: 100
   RotationSpeed: 50
   MaxSpeed: 30
+  HoverboardRotationSpeed: 100
+  HoverboardMaxSpeed: 60
   InventorySize: 4
   SpawnRadius: 600
   SpawnArea: -1
@@ -685,10 +687,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 109084172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb3e0e91d31ab4d63b50f0951989725f, type: 3}
+  m_Script: {fileID: 11500000, guid: 885b1972ad11a921d000d37b8d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 54484093}
+  target: {fileID: 54484094}
+  distance: 10
+  height: 2
+  heightDamping: 2
+  rotationDamping: 3
 --- !u!81 &109084174
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1081,7 +1087,7 @@ MonoBehaviour:
   - {fileID: 100082, guid: 5f0a0d048d627f54aa751cf932970243, type: 2}
   - {fileID: 100000, guid: 83cb84560bcf2ad40a4c71bd9ef1c390, type: 2}
   - {fileID: 100000, guid: 1a29f457bc4decf428a30d008ce9f4ab, type: 2}
-  SpawnCounts: 1e00000002000000e8030000
+  SpawnCounts: 1e0000000200000006000000
   ParentGameObject: {fileID: 176382631}
   SpawnRadius: 600
   HeightAboveGround: 2
@@ -2825,6 +2831,8 @@ MonoBehaviour:
   MovementForce: 100
   RotationSpeed: 50
   MaxSpeed: 30
+  HoverboardRotationSpeed: 100
+  HoverboardMaxSpeed: 60
   InventorySize: 4
   SpawnRadius: 600
   SpawnArea: 1
@@ -3966,10 +3974,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1122927343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb3e0e91d31ab4d63b50f0951989725f, type: 3}
+  m_Script: {fileID: 11500000, guid: 885b1972ad11a921d000d37b8d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 755907651}
+  target: {fileID: 755907655}
+  distance: 10
+  height: 2
+  heightDamping: 2
+  rotationDamping: 3
 --- !u!1 &1130856484
 GameObject:
   m_ObjectHideFlags: 0
@@ -8756,7 +8768,7 @@ Animator:
     type: 2}
   m_PrefabInternal: {fileID: 1679829975}
   m_GameObject: {fileID: 2136168703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: ed3950b400d04884ea86e504b3c5f873, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 1

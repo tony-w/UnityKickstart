@@ -2769,6 +2769,8 @@ MonoBehaviour:
   MovementForce: 100
   RotationSpeed: 50
   MaxSpeed: 30
+  HoverboardRotationSpeed: 75
+  HoverboardMaxSpeed: 45
   InventorySize: 4
   SpawnRadius: 1
   SpawnArea: 1
