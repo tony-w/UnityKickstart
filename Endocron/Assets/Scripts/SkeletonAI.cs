@@ -8,11 +8,12 @@ public class SkeletonAI : MonoBehaviour {
 	public float DistToAttack;
 	public GameObject RedPlayer;
 	public GameObject BluePlayer;
-
+	
+	private bool isDead;
+	private bool redLightHit = false;
+	private bool blueLightHit = false;
 	private GameObject CurrentPlayerToAttack;
-
 	private float TimeSinceAttacking = 0.0f;
-
 	
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,11 @@ public class SkeletonAI : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
+		if (isDead) {
+			// Stop moving, you're dead!
+			this.rigidbody.velocity = Vector3.zero;
+			return;
+		}
 		Vector3 thisPosition = this.transform.position;
 		Vector3 redPlayerPosition = RedPlayer.transform.position;
 		Vector3 bluePlayerPosition = BluePlayer.transform.position;
@@ -35,10 +41,10 @@ public class SkeletonAI : MonoBehaviour {
 		float distToRedPlayer = vecToRedPlayer.magnitude;
 		Vector3 vecToBluePlayer = bluePlayerPosition - thisPosition;
 		float distToBluePlayer = vecToBluePlayer.magnitude;
-
+		
 		if (distToRedPlayer <= this.DistToChase && distToRedPlayer < distToBluePlayer) {
 			CurrentPlayerToAttack = this.RedPlayer;
-
+			
 			this.transform.LookAt(redPlayerPosition);
 			if (distToRedPlayer > DistToAttack) {
 				// Chase the red player down!
@@ -51,7 +57,7 @@ public class SkeletonAI : MonoBehaviour {
 			}
 		} else if (distToBluePlayer <= this.DistToChase){
 			CurrentPlayerToAttack = this.BluePlayer;
-
+			
 			this.transform.LookAt(bluePlayerPosition);
 			if (distToBluePlayer > DistToAttack) {
 				// Chase the blue player down!
@@ -72,11 +78,35 @@ public class SkeletonAI : MonoBehaviour {
 			// Slow this monster down!
 			this.rigidbody.velocity = this.rigidbody.velocity.normalized * MaxSpeed;
 		}
-
+		
 		if (TimeSinceAttacking >= 1.0f) {
 			CurrentPlayerToAttack.GetComponent<Player>().Kill();
 			CurrentPlayerToAttack = null;
 			TimeSinceAttacking = 0.0f;
+		}
+	}
+	
+	void OnTriggerEnter(Collider other) {
+		string name = other.name;
+		if (name.Equals("RedSpotlight")) {
+			redLightHit = true;
+		}
+		if (name.Equals("BlueSpotlight")) {
+			blueLightHit = true;
+		}
+		if (redLightHit && blueLightHit) {
+			// Two lights hit me; I'm dead.
+			this.animation.Play("die", PlayMode.StopAll);
+			this.isDead = true;
+		}
+	}
+	
+	void OnTriggerExit(Collider other) {
+		if (other.name.Equals("RedSpotlight")) {
+			redLightHit = false;
+		}
+		if (other.name.Equals("BlueSpotlight")) {
+			blueLightHit = false;
 		}
 	}
 }

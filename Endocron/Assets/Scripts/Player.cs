@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
 	void Start ()
 	{
+		freezePosition = this.transform.position;
+		freezeRotation = this.transform.rotation;
 		this.Inventory = new string[InventorySize];
 		for (int i = 0; i < InventorySize; i++) this.Inventory [i] = null;
 
@@ -33,9 +35,6 @@ public class Player : MonoBehaviour
 		Vector3 worldPosition = new Vector3 (location.x, 5, location.y);
 
 		this.transform.position = worldPosition;
-
-		freezePosition = this.transform.position;
-		freezeRotation = this.transform.rotation;
 
 		this.PlayerController = this.GetComponent<PlayerController>();
 
@@ -93,7 +92,7 @@ public class Player : MonoBehaviour
 		return AddItemToInventory (item);
 	}
 
-	public bool IsHoldingItem(string itemName) {
+	public bool IsHoldingItem(string itemName) {;
 		for (int i = 0; i < this.Inventory.Length; i++) {
 			if (null != this.Inventory [i] && this.Inventory [i].Equals(itemName)) {
 				return true;
@@ -113,8 +112,8 @@ public class Player : MonoBehaviour
 			if (null == this.Inventory [i]) {
 				this.Inventory [i] = item;
 				if (item.Equals("Hoverboard")) {
-					this.MaxSpeed = 30;
-					this.RotationSpeed = 60;
+					this.MaxSpeed = 60;
+					this.RotationSpeed = 100;
 				}
 				return true;
 			}
@@ -130,13 +129,10 @@ public class Player : MonoBehaviour
 	}
 
 	public void Kill() {
-		// Respawn the Player's half of the Endocron, if they have it
-
-		//	Respawn the Player at a new location
 		Vector2 location = Random.insideUnitCircle * this.SpawnRadius;
 		while (location.y * SpawnArea < 0)
 			location = Random.insideUnitCircle * this.SpawnRadius;
-		Vector3 worldPosition = new Vector3 (location.x, 5, location.y);
+		Vector3 worldPosition = new Vector3(location.x, 5, location.y);
 
 		this.transform.position = worldPosition;
 	}

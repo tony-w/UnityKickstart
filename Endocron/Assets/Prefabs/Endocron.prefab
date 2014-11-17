@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 100
-  CollectedSound: {fileID: 8300000, guid: 3fd7b447dd4f84cf5a1987a1710ea340, type: 3}
+  CollectedSound: {fileID: 8300000, guid: c59e7caf4ec97b34dad8bfa3e72f3531, type: 3}
   Name: Endocron
 --- !u!1001 &100100000
 Prefab:

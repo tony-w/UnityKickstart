@@ -727,7 +727,7 @@ Camera:
     width: .5
     height: 1
   near clip plane: .300000012
-  far clip plane: 75
+  far clip plane: 100
   field of view: 50
   orthographic: 0
   orthographic size: 20
@@ -1080,9 +1080,10 @@ MonoBehaviour:
   CollectablesToPlace:
   - {fileID: 100082, guid: 5f0a0d048d627f54aa751cf932970243, type: 2}
   - {fileID: 100000, guid: 83cb84560bcf2ad40a4c71bd9ef1c390, type: 2}
-  SpawnCounts: 3200000002000000
+  - {fileID: 100000, guid: 1a29f457bc4decf428a30d008ce9f4ab, type: 2}
+  SpawnCounts: 1e00000002000000e8030000
   ParentGameObject: {fileID: 176382631}
-  SpawnRadius: 1000
+  SpawnRadius: 600
   HeightAboveGround: 2
 --- !u!1 &232193073
 GameObject:
@@ -1482,6 +1483,7 @@ GameObject:
   - 4: {fileID: 359046420}
   - 108: {fileID: 359046419}
   - 114: {fileID: 359046421}
+  - 135: {fileID: 359046422}
   m_Layer: 0
   m_Name: RedSpotlight
   m_TagString: Untagged
@@ -1500,7 +1502,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: .949999988
-  m_Range: 45
+  m_Range: 90
   m_SpotAngle: 55
   m_CookieSize: 10
   m_Shadows:
@@ -1511,7 +1513,7 @@ Light:
     m_Softness: 4
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
+  m_DrawHalo: 1
   m_ActuallyLightmapped: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -1548,6 +1550,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 54484093}
+--- !u!135 &359046422
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359046418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 40}
 --- !u!1 &364446295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3917,7 +3931,7 @@ Camera:
     width: .5
     height: 1
   near clip plane: .300000012
-  far clip plane: 75
+  far clip plane: 100
   field of view: 50
   orthographic: 0
   orthographic size: 20
@@ -6901,7 +6915,7 @@ MonoBehaviour:
   ScoreBackground: {fileID: 2800000, guid: 03134cf5d933f4e26af6033b77587f19, type: 3}
   BluePlayer: {fileID: 755907651}
   RedPlayer: {fileID: 54484093}
-  WinDistance: 0
+  WinDistance: 10
 --- !u!4 &1512799657
 Transform:
   m_ObjectHideFlags: 0
@@ -8597,6 +8611,7 @@ GameObject:
   - 4: {fileID: 2121053052}
   - 108: {fileID: 2121053051}
   - 114: {fileID: 2121053050}
+  - 135: {fileID: 2121053053}
   m_Layer: 0
   m_Name: BlueSpotlight
   m_TagString: Untagged
@@ -8625,9 +8640,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 0
-  m_Color: {r: 0, g: .00689649582, b: 1, a: 1}
+  m_Color: {r: .375, g: .431034327, b: 1, a: 1}
   m_Intensity: .949999988
-  m_Range: 45
+  m_Range: 90
   m_SpotAngle: 55
   m_CookieSize: 10
   m_Shadows:
@@ -8638,7 +8653,7 @@ Light:
     m_Softness: 4
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
+  m_DrawHalo: 1
   m_ActuallyLightmapped: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -8663,6 +8678,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!135 &2121053053
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2121053049}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 40}
 --- !u!1 &2126512614
 GameObject:
   m_ObjectHideFlags: 0

@@ -206,6 +206,8 @@ MonoBehaviour:
   RotationSpeed: 0
   MaxSpeed: 15
   InventorySize: 4
+  SpawnRadius: 0
+  SpawnArea: 0
   GroundContactDelta: {fileID: 100004}
   HUDColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11400002

@@ -18,6 +18,18 @@ public class HeadsUpDisplay : MonoBehaviour
 		const float width = 225.0f;
 		this.DrawScore(TextAnchor.UpperLeft, this.BluePlayer.GetComponent<Player>(), new Vector2(10.0f, Screen.height - height - 10.0f), width, height);
 		this.DrawScore(TextAnchor.UpperRight, this.RedPlayer.GetComponent<Player>(), new Vector2(Screen.width - 10.0f - width, Screen.height - height - 10.0f), width, height);
+		
+		GUIStyle locationStyle = new GUIStyle("label");
+		locationStyle.fontSize = 14;
+		locationStyle.alignment = TextAnchor.UpperLeft;
+		locationStyle.normal.textColor = this.BluePlayer.GetComponent<Player>().HUDColor;
+		GUI.Label (new Rect( 0, 0, width, height), this.BluePlayer.GetComponent<Player>().transform.position.ToString(), locationStyle);
+		
+		locationStyle = new GUIStyle("label");
+		locationStyle.fontSize = 14;
+		locationStyle.alignment = TextAnchor.UpperRight;
+		locationStyle.normal.textColor = this.RedPlayer.GetComponent<Player>().HUDColor;
+		GUI.Label (new Rect( Screen.width - width, 0, width, height), this.RedPlayer.GetComponent<Player>().transform.position.ToString(), locationStyle);
 
 		const float restartButtonWidth = 100.0f;
 		const float restartButtonHeight = 40.0f;
@@ -56,7 +68,7 @@ public class HeadsUpDisplay : MonoBehaviour
 		scoreStyle.fontSize = 10;
 		scoreStyle.alignment = alignment;
 		scoreStyle.normal.textColor = player.HUDColor;
-		GUI.Label (new Rect(topLeft.x + outerMargin, topLeft.y + topMargin, width - outerMargin * 2, height), true ? "You found the Endocron, find your partner." : "Keep looking for the Endocron.", scoreStyle);
+		GUI.Label (new Rect(topLeft.x + outerMargin, topLeft.y + topMargin, width - outerMargin * 2, height), HasEndocron ? "You found the Endocron, find your partner." : "Keep looking for the Endocron.", scoreStyle);
 
 		GUIStyle nameStyle = new GUIStyle("label");
 		nameStyle.fontSize = 14;
