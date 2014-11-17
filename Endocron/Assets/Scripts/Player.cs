@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 	public float HoverboardRotationSpeed, HoverboardMaxSpeed;
 	public int InventorySize = 4;
 
+	public bool LeavingBounds { get; set; }
+
 	public float SpawnRadius;
 	public float SpawnArea;
 
@@ -51,20 +53,26 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+		
 		float translate = this.PlayerController.Movement;
 		float rotation = this.PlayerController.Rotation;
-
 		translate *= Time.deltaTime;
 		rotation *= Time.deltaTime;
-		if (translate != 0.0f) {
-			transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed,
-		                     	0,
-		                     	translate * Mathf.Cos (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed);
-			animator.Play("walking");
-		}
-		if (rotation != 0.0f) {
-			transform.Rotate (0, rotation * RotationSpeed, 0);
-			if (translate == 0.0f) animator.Play(rotation < 0 ? "left_turn" : "right_turn");
+		if (LeavingBounds) {
+			// Respawn if hitting bounds of game.
+			Kill();
+			LeavingBounds = false;
+		} else {
+			if (translate != 0.0f) {
+				transform.Translate (translate * Mathf.Sin (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed,
+			                     	0,
+			                     	translate * Mathf.Cos (transform.rotation.y * Mathf.PI / 180.0f) * MaxSpeed);
+				animator.Play("walking");
+			}
+			if (rotation != 0.0f) {
+				transform.Rotate (0, rotation * RotationSpeed, 0);
+				if (translate == 0.0f) animator.Play(rotation < 0 ? "left_turn" : "right_turn");
+			}
 		}
 
 		if (translate == 0.0f && rotation == 0.0f) {
